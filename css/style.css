@@ -1,0 +1,32 @@
+/* Photo list view */
+.photo_list{
+	text-align: center;
+}
+
+.photo_list_item{
+	padding-bottom: 15px;
+}
+
+.photo_list .photo{
+	width: 280px;
+}
+
+.palette {
+	width: 280px;
+	height: 50px;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.palette .item {
+	width: 25%;
+	height: 50px;
+	display: inline-block;
+	float: left;
+}
+
+/* photo detail view */
+.tags_display span{
+	padding: 0 10px;
+}
+
