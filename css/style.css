@@ -1,10 +1,19 @@
+.clear {clear: both;}
+
 /* Photo list view */
 .photo_list{
 	text-align: center;
 }
 
 .photo_list_item{
+	padding-top: 15px;
 	padding-bottom: 15px;
+	margin-bottom: 15px;
+	cursor: pointer;
+	background-color: #fff;
+	-webkit-box-shadow: 1px 0px 8px rgba(50, 50, 50, 0.5);
+	-moz-box-shadow:    1px 0px 8px rgba(50, 50, 50, 0.5);
+	box-shadow:         1px 0px 8px rgba(50, 50, 50, 0.5);
 }
 
 .photo_list .photo{
@@ -28,5 +37,31 @@
 /* photo detail view */
 .tags_display span{
 	padding: 0 10px;
+}
+
+/* Search Tag Page */
+.tag_group span{
+	
+}
+
+.thumbnail {
+	display: inline-block;
+	float: left;
+	cursor: pointer;
+	background-color: #fff;
+	padding: 5px;
+	margin: 0 5px;
+	-webkit-box-shadow: 1px 0px 8px rgba(50, 50, 50, 0.5);
+	-moz-box-shadow:    1px 0px 8px rgba(50, 50, 50, 0.5);
+	box-shadow:         1px 0px 8px rgba(50, 50, 50, 0.5);
+}
+
+.thumbnail img{
+	height: 100px;
+}
+
+/* Footer */
+.nav{
+	position: fixed !important;
 }
 
