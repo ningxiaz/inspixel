@@ -3,7 +3,7 @@
 			<ul>
 				<li><a href="index.php#tags" id="tags_tab" data-icon="custom">Tags</a></li>
 				<li><embed src="icons/camera_new.svg" type="image/svg+xml" id="photo_tab" data-icon="custom">Take Photo/></li>
-				<li><a href="index.php#my" id="ins_tab" data-icon="custom">Inspirations</a></li>
+				<li><embed src="icons/inspire.svg" id="ins_tab" data-icon="custom">Inspirations/></li>
 			</ul>
 		</div>
 </div>
