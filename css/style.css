@@ -80,19 +80,19 @@
 }
 
 #tag_icon{
-	width: 52px;
+	width: 45px;
 }
 
 #photo_icon{
-	width: 55px;
+	width: 48px;
 }
 
 #ins_icon{
-	width: 50px;
+	width: 43px;
 }
 
 .nav .ui-btn-inner{
-	padding: 0 !important;
+	padding: 5 !important;
 	padding-top: 5px;
 	margin: 0;
 }

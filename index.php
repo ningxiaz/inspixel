@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
 
 	<link rel="stylesheet" href="css/style.css" />
-	<link rel="apple-touch-icon" href="icons/homeScreenicon.png" />
+	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
 	<link rel="apple-touch-startup-image" href="icons/login_bg_light.png" />
 	
 	<script src="js/jquery-1.8.2.min.js"></script>
