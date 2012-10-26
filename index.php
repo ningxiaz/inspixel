@@ -56,7 +56,7 @@
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
 		<div data-role="header">
-			<a href="#" data-role="button" data-icon="colours">Color</a>
+			<a href="#" data-role="button" data-icon="colours"></a>
 			<h1>My Inspirations</h1>
 			<a href="#">Map</a>			
 		</div>
