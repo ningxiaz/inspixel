@@ -12,9 +12,9 @@
 	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
 
 	<link rel="stylesheet" href="css/style.css" />
-	<link rel="apple-touch-icon" href="appicon.png" />
-	<link rel="apple-touch-startup-image" href="#" />
-
+	<link rel="apple-touch-icon" href="icons/homeScreenicon.png" />
+	<link rel="apple-touch-startup-image" href="icons/login_bg_light.png" />
+	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 	<script src="js/index.js"></script>
@@ -55,8 +55,8 @@
 
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
-		<div data-role="header">
-			<a href="#">Color</a>
+		<div data-role="header" data-position="fixed">
+			<a id="color" href="#" data-icon="custom">Color</a>
 			<h1>My Inspirations</h1>
 			<a href="#">Map</a>			
 		</div>
@@ -91,7 +91,7 @@
 
 	<!-- Tag Searching Page -->
 	<div data-role="page" id="tags">
-		<div data-role="header">
+		<div data-role="header" data-position="fixed">
 			<a href="#my">Back</a>
 			<h1>Search</h1>
 		</div>
@@ -131,10 +131,10 @@
 
 	<!-- Photo Details Page -->
 	<div data-role="page" id="details">
-		<div data-role="header">
+		<div data-role="header"  data-position="fixed">
 			<a href="#" data-rel="back">Back</a>
-			<h1>Photo</h1>
-			<a href="#">...</a>
+			<h1>Inspiration</h1>
+			<a href="#edit" id="more">...</a>
 		</div>
 
 		<div data-role="content" class="photo_list">
@@ -149,6 +149,37 @@
 			</div>
 			<p class="tags_display"><span>#NewOrder</span><span>#AlbumArt</span><span>#80s</span></p>
 			<p class="location">@ London Studio</p>
+		</div>
+
+		<?php
+			include("footer.php");
+		?>
+	</div>
+
+	<!-- Photo Details Page -->
+	<div data-role="page" id="edit">
+		<div data-role="header"  data-position="fixed">
+			<a href="#" data-rel="back">Cancel</a>
+			<h1>Inspiration</h1>
+			<a href="#">Save</a>
+		</div>
+
+		<div data-role="content" class="photo_list">
+			<div class="photo_list_item">
+				<img src="photos/test1.jpg" class="photo"/>
+				<div class="palette">
+					<div class="item" style="background-color: #333;"></div>
+					<div class="item" style="background-color: #ccc;"></div>
+					<div class="item" style="background-color: red;"></div>
+					<div class="item" style="background-color: #000;"></div>
+				</div>
+			</div>
+			<div data-role="fieldcontain">
+				<form action="" method="post">
+					<input type="text" name="tag" id="edit_tag" value="NewOrder, AlbumArt, 80s"></input> <br/>
+					<input type="text" name="location" id="edit_location" value="London Studio"></input>
+				</form>
+			</div>
 		</div>
 
 		<?php

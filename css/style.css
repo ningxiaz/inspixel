@@ -1,5 +1,8 @@
 .clear {clear: both;}
 
+/* Login */
+
+
 /* Photo list view */
 .photo_list{
 	text-align: center;
@@ -65,3 +68,31 @@
 	position: fixed !important;
 }
 
+/* Icons */
+#color .ui-btn {
+	height: 40px;
+}
+
+#color .ui-icon{
+	background: url(../icons/color.png) !important;
+	width: 28px;
+	height: 28px;
+}
+
+#tag_icon{
+	width: 52px;
+}
+
+#photo_icon{
+	width: 55px;
+}
+
+#ins_icon{
+	width: 50px;
+}
+
+.nav .ui-btn-inner{
+	padding: 0 !important;
+	padding-top: 5px;
+	margin: 0;
+}

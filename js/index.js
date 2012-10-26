@@ -6,4 +6,5 @@ $(document).ready(function(){
 	$('.thumbnail').click(function(){
 		window.location.href="index.php#details";
 	});
+
 });
