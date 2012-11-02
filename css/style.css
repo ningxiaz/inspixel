@@ -1,5 +1,8 @@
 .clear {clear: both;}
 
+/* Login */
+
+
 /* Photo list view */
 .photo_list{
 	text-align: center;
@@ -65,8 +68,31 @@
 	position: fixed !important;
 }
 
-.ui-icon-colours {
-		background-image: url("icons/color.png");
-		background-size: 18px 18px;
-	}
+/* Icons */
+#color .ui-btn {
+	height: 40px;
+}
 
+#color .ui-icon{
+	background: url(../icons/color.png) !important;
+	width: 28px;
+	height: 28px;
+}
+
+#tag_icon{
+	width: 40px;
+}
+
+#photo_icon{
+	width: 40px;
+}
+
+#ins_icon{
+	width: 40px;
+}
+
+.nav .ui-btn-inner{
+	padding: 5 !important;
+	padding-top: 5px;
+	margin: 0;
+}
