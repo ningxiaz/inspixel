@@ -37,6 +37,13 @@
 	float: left;
 }
 
+#slider_shaded {
+	position: fixed;
+	top: 80px;
+	left: 85%;
+	display: none;
+}
+
 /* photo detail view */
 .tags_display span{
 	padding: 0 10px;
@@ -79,7 +86,7 @@
 	height: 28px;
 }
 
-#tag_icon{
+#fav_icon{
 	width: 40px;
 }
 
@@ -95,4 +102,15 @@
 	padding: 5 !important;
 	padding-top: 5px;
 	margin: 0;
+}
+
+#input_wrapper{
+	opacity: 0;
+}
+
+#photo_li{
+	margin-top: -23px;
+	margin-left: 1px;
+	z-index: -100;
+	position: relative;
 }
