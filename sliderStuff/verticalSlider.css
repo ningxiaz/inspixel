@@ -28,7 +28,7 @@ div.ui-slider-vertical{
 	width: 10px; 
 }
 
-a.ui-slider-handle-vertical{ 
+ui-slider-handle{ 
 	position: absolute; 
 	z-index: 10;  
 	top: 50%; 
