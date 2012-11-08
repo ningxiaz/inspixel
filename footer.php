@@ -1,4 +1,4 @@
-<div data-role="footer" class="nav" data-position="fixed" data-tap-toggle="true" data-id="global_footer">
+<div data-role="footer" class="nav" data-position="fixed">
 		<div data-role="navbar">
 			<ul>
 				<li><a href="index.php#my"><img id="ins_icon" src="icons/inspire_sized.png"></a></li>

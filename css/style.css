@@ -3,7 +3,7 @@
 /* Login */
 
 
-/* Photo list view */
+/* Photo List View */
 .photo_list{
 	text-align: center;
 }
@@ -23,6 +23,10 @@
 	width: 280px;
 }
 
+.new_photo{
+	width: 280px;
+}
+
 .palette {
 	width: 280px;
 	height: 50px;
@@ -30,24 +34,33 @@
 	margin: 0 auto;
 }
 
-.palette .item {
-	width: 25%;
+.palette .swatch {
+	width: 20%;
 	height: 50px;
 	display: inline-block;
 	float: left;
 }
 
-#slider_shaded {
-	position: fixed;
-	top: 80px;
-	left: 85%;
-	display: none;
-}
-
-/* photo detail view */
+/* Photo Detail View */
 .tags_display span{
 	padding: 0 10px;
 }
+
+#more_options{
+	display: none;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	z-index: 2000 !important;
+	width: 100%;
+	background-color: #333;
+}
+
+.option{
+	width: 85%;
+	margin: 10px auto;
+}
+
 
 /* Search Tag Page */
 .tag_group span{

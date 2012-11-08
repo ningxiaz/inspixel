@@ -11,7 +11,6 @@
     <title>Inspixel</title>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
-	<link href="css/verticalSlider.css" rel="stylesheet" type="text/css" />
 
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
@@ -19,7 +18,9 @@
 	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
-	<script src="js/verticalSlider.js"></script>
+	<script src="js/quantize.js"></script>
+    <script src="js/color-thief.js"></script>
+
 	<script src="js/index.js"></script>
 </head/>
 <body>
@@ -59,32 +60,28 @@
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
 		<div data-role="header" data-position="fixed">
-			<a href="#">Map</a>	
+			<a id="color" href="#" data-icon="custom">Color</a>	
 			<h1>My Inspirations</h1>
-			<a id="color" href="#" data-icon="custom">Color</a>		
+			<a href="#search" data-icon="search">Search</a>		
 		</div>
 
 		<div data-role="content" class="photo_list">
-			<div data-role="fieldcontain">
-				<form action="search.php" method="post">
-					<input type="text" name="tag" id="search_tag">
-				</form>
-			</div>
 			<?php 
 				include("config.php");
 				session_start();
 				$user_id = $_SESSION['user_id'];
 
-				$query = "SELECT photo_id, save_path, color_1, color_2, color_3, color_4 FROM Photos, Palettes WHERE Photos.user_id = $user_id AND Photos.palette_id = Palettes.palette_id ORDER BY Photos.ts DESC";
+				$query = "SELECT photo_id, save_path, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.user_id = $user_id AND Photos.palette_id = Palettes.palette_id ORDER BY Photos.ts DESC";
 				if($result = mysql_query($query, $link)){
 					while($row = mysql_fetch_array($result)){
 						echo "<div class=\"photo_list_item\">
 									<img src=\"".$row['save_path']."\" alt=\"".$row['photo_id']."\" class=\"photo\"/>
 								  <div class=\"palette\">
-								  	<div class=\"item\" style=\"background-color: ".$row['color_1'].";\"></div>
-									<div class=\"item\" style=\"background-color: ".$row['color_2'].";\"></div>
-									<div class=\"item\" style=\"background-color: ".$row['color_3'].";\"></div>
-									<div class=\"item\" style=\"background-color: ".$row['color_4'].";\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
 								  </div>
 							  </div>";
 					}
@@ -97,10 +94,44 @@
 		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
 			<input type="hidden" name="photo_id" id="show_photo_id"></input>
 		</form>
-		<div id="slider_shaded">
-			<div data-role="fieldcontain" >
-				<label for="color_slider"</label>
-				<input type="range" id="color_slider" value="15" min="0" max="135" step="15" sliderOrientation="vertical" />
+
+		<?php
+			include("footer.php");
+		?>
+	</div>
+
+	<!-- Tag Searching Page -->
+	<div data-role="page" id="search">
+		<div data-role="header" data-position="fixed">
+			<a href="#my">Back</a>
+			<h1>Search Results</h1>
+		</div>
+
+		<div data-role="content">
+			<div data-role="fieldcontain">
+				<form action="search.php" method="post">
+					<input type="text" name="tag" id="search_tag">
+				</form>
+			</div>
+			<div class="tag_group">
+				<p><span>#music</span></p>
+				<div class="thumbnail">
+					<img src="photos/test1.jpg"/>
+				</div>
+				<div class="thumbnail">
+					<img src="photos/test2.jpg"/>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="tag_group">
+				<p><span>#black and white</span></p>
+				<div class="thumbnail">
+					<img src="photos/test3.jpg"/>
+				</div>
+				<div class="thumbnail">
+					<img src="photos/test4.jpg"/>
+				</div>
+				<div class="clear"></div>
 			</div>
 		</div>
 
@@ -130,7 +161,7 @@
 		<div data-role="header"  data-position="fixed">
 			<a href="#" data-rel="back">Back</a>
 			<h1>Inspiration</h1>
-			<a href="#edit" id="more">...</a>
+			<a href="#" id="more">...</a>
 		</div>
 
 		<div data-role="content" class="photo_list">
@@ -139,16 +170,17 @@
 				session_start();
 				$photo_id = $_SESSION['photo_id'];
 
-				$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4 FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
+				$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
 				$result = mysql_query($query);
 				$row = mysql_fetch_array($result);
 				echo "<div class=\"photo_list_item\">
 									<img src=\"".$row['save_path']."\" class=\"photo\"/>
 								  <div class=\"palette\">
-								  	<div class=\"item\" style=\"background-color: ".$row['color_1'].";\"></div>
-									<div class=\"item\" style=\"background-color: ".$row['color_2'].";\"></div>
-									<div class=\"item\" style=\"background-color: ".$row['color_3'].";\"></div>
-									<div class=\"item\" style=\"background-color: ".$row['color_4'].";\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
+								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
 								  </div>
 							  </div>";
 				$location_lat = $row['geolat'];
@@ -169,6 +201,12 @@
 			?>
 		</div>
 
+		<div id="more_options">
+			<a href="#edit" class="option" data-role="button" id="edit_button">Edit</a>
+			<a href="#" class="option" data-role="button" id="delete_button">Delete</a>
+			<a href="#" class="option" data-role="button" id="cancel_button">Cancel</a>
+		</div>
+
 		<?php
 			include("footer.php");
 		?>
@@ -178,25 +216,50 @@
 	<div data-role="page" id="edit">
 		<div data-role="header"  data-position="fixed">
 			<a href="#" data-rel="back">Cancel</a>
-			<h1>Inspiration</h1>
-			<a href="#">Save</a>
+			<h1>Edit</h1>
+			<a href="#" id="save_edit">Save</a>
 		</div>
 
 		<div data-role="content" class="photo_list">
-			<div class="photo_list_item">
-				<img src="photos/test1.jpg" class="photo"/>
-				<div class="palette">
-					<div class="item" style="background-color: #333;"></div>
-					<div class="item" style="background-color: #ccc;"></div>
-					<div class="item" style="background-color: red;"></div>
-					<div class="item" style="background-color: #000;"></div>
-				</div>
-			</div>
-			<div data-role="fieldcontain">
-				<form action="" method="post">
-					<input type="text" name="tag" id="edit_tag" value="NewOrder, AlbumArt, 80s"></input> <br/>
-				</form>
-			</div>
+			<?php
+				include("config.php");
+				session_start();
+				$photo_id = $_SESSION['photo_id'];
+
+				if(isset($photo_id)){
+					$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
+					$result = mysql_query($query);
+					$row = mysql_fetch_array($result);
+					echo "<div class=\"photo_list_item\">
+										<img src=\"".$row['save_path']."\" class=\"photo\"/>
+									  <div class=\"palette\">
+									  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
+								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
+								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
+								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
+								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
+									  </div>
+								  </div>";
+					$location_lat = $row['geolat'];
+					$location_lng = $row['geolng'];
+
+					echo "<div data-role=\"fieldcontain\"><form id=\"edit_form\" action=\"edit.php\" method=\"post\" data-ajax=\"false\">
+						<input type=\"text\" name=\"tag\" id=\"edit_tag\" value=\"";
+					$query = "SELECT name FROM Tags, PhotosTags WHERE PhotosTags.photo_id = $photo_id AND Tags.tag_id = PhotosTags.tag_id";
+					if($result = mysql_query($query, $link)){
+						while ($row = mysql_fetch_array($result)) {
+							echo $row['name'] . ", ";
+						}
+
+						echo "\"></input> <br/></form></div>";
+					}
+					else{
+						echo mysql_error($link);
+					}
+					echo "</p>";
+					echo "<p>@ $location_lat, $location_lng</p>";
+				}
+			?>
 		</div>
 
 		<?php
@@ -217,14 +280,10 @@
 				<?php 
 					session_start();
 					$photo_name = $_SESSION['photo_name'];
-					echo "<img src=\"photos/$photo_name\" class=\"photo\"/>";
+					echo "<img src=\"photos/$photo_name\" class=\"new_photo\"/>";
 				?>
 				
 				<div class="palette">
-					<div class="item" style="background-color: #333333;"></div>
-					<div class="item" style="background-color: #cccccc;"></div>
-					<div class="item" style="background-color: #FF0000;"></div>
-					<div class="item" style="background-color: #000000;"></div>
 				</div>
 			</div>
 			<script>
@@ -247,10 +306,11 @@
 			<div data-role="fieldcontain">
 				<form action="save_add.php" id="add_form" method="post" data-ajax="false">
 					<input type="text" name="tag" id="add_tag" placeholder="Tags seperated by commas"></input> <br/>
-					<input type="hidden" name="color_1" id="color_1" value="#333333"></input>
-					<input type="hidden" name="color_2" id="color_2" value="#cccccc"></input>
-					<input type="hidden" name="color_3" id="color_3" value="#FF0000"></input>
-					<input type="hidden" name="color_4" id="color_4" value="#000000"></input>
+					<input type="hidden" name="color_1" id="color_1"></input>
+					<input type="hidden" name="color_2" id="color_2"></input>
+					<input type="hidden" name="color_3" id="color_3"></input>
+					<input type="hidden" name="color_4" id="color_4"></input>
+					<input type="hidden" name="color_5" id="color_5"></input>
 					<input type="hidden" name="lat" id="lat"></input>
 					<input type="hidden" name="lng" id="lng"></input>
 				</form>
