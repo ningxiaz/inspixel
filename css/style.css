@@ -26,6 +26,7 @@
 	float: left;
 	padding: 0;
 	margin: 0;
+	cursor: pointer;
 }
 
 #red{
@@ -61,7 +62,7 @@
 }
 
 li.selected{
-	border: 1px white;
+	border: 1px black;
 }
 
 .photo_list{
@@ -110,18 +111,18 @@ li.selected{
 	position: relative;
 	top: 0;
 	left: 0;
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
 }
 
 .faved{
 	background: url(../icons/newStar_selected.png);
-	background-size: 30px 30px;
+	background-size: 40px 40px;
 }
 
 .not_faved{
 	background: url(../icons/newStar_unselected.png);
-	background-size: 30px 30px;
+	background-size: 40px 40px;
 }
 
 .tags_display span{

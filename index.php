@@ -61,7 +61,7 @@
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
 		<div data-role="header" data-position="fixed">
-			<a id="color" href="#" data-icon="custom">Color</a>	
+			<!-- <a id="color" href="#" data-icon="custom">Color</a>	-->
 			<h1>My Inspirations</h1>
 			<a href="#search" data-icon="search">Search</a>		
 		</div>
@@ -105,26 +105,10 @@
 					<input type="text" name="tag" id="search_tag">
 				</form>
 			</div>
-			<div class="tag_group">
-				<p><span>#music</span></p>
-				<div class="thumbnail">
-					<img src="photos/test1.jpg"/>
-				</div>
-				<div class="thumbnail">
-					<img src="photos/test2.jpg"/>
-				</div>
-				<div class="clear"></div>
+
+			<div class="search_result">
 			</div>
-			<div class="tag_group">
-				<p><span>#black and white</span></p>
-				<div class="thumbnail">
-					<img src="photos/test3.jpg"/>
-				</div>
-				<div class="thumbnail">
-					<img src="photos/test4.jpg"/>
-				</div>
-				<div class="clear"></div>
-			</div>
+
 		</div>
 
 		<?php

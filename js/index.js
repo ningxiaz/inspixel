@@ -6,8 +6,8 @@ $(document).ready(function(){
 
 
 $('#my').live('pageinit',function(event){
-	//show all photos first
-	sendValue(-1);
+	//show all photos by default
+	ajax_show_photos(-1);
 
   	$('.photo_list_item').live('tap',function(event) {
 		var photo_id = $(this).find('.photo').attr('alt');
@@ -16,40 +16,40 @@ $('#my').live('pageinit',function(event){
 	});
 
 	$('#red').live('tap',function(event) {
-    	sendValue(0);
+    	ajax_show_photos(0);
 	});
 
 	$('#orange').live('tap',function(event) {
-    	sendValue(1);
+    	ajax_show_photos(1);
 	});
 
 	$('#yellow').live('tap',function(event) {
-    	sendValue(2);
+    	ajax_show_photos(2);
 	});
 
 	$('#green').live('tap',function(event) {
-    	sendValue(3);
+    	ajax_show_photos(3);
 	});
 
 	$('#cyan').live('tap',function(event) {
-    	sendValue(4);
+    	ajax_show_photos(4);
 	});
 
 	$('#blue').live('tap',function(event) {
-    	sendValue(5);
+    	ajax_show_photos(5);
 	});
 
 	$('#magenta').live('tap',function(event) {
-    	sendValue(6);
+    	ajax_show_photos(6);
 	});
 
 	$('#bwg').live('tap',function(event) {
-    	sendValue(7);
+    	ajax_show_photos(7);
 	});
 });
 
 //send category values to php via AJAX and display results
-function sendValue(val){
+function ajax_show_photos(val){
 	$.post("show_photos.php", {sendValue: val}, function(data){
 		$('.photo_list_wrapper').html(data.returnValue);
 	}, "json");
@@ -140,5 +140,31 @@ $('#edit').live('pageinit',function(event){
 
 $('#fav').live('pageinit',function(event){
 	//show faved photos
-	sendValue(8);
+	ajax_show_photos(8);
+
+	$('.photo_list_item').live('tap',function(event) {
+		var photo_id = $(this).find('.photo').attr('alt');
+		$('#show_photo_id').val(photo_id);
+		$('#show_form').submit();
+	});
 });
+
+$('#search').live('pageinit',function(event){
+	$('#search_tag').keyup(function(){
+		var search_query = $(this).val();
+		console.log(search_query);
+		ajax_search_photos(search_query);
+	});
+
+	$('.thumbnail').live('tap',function(event) {
+		var photo_id = $(this).find('img').attr('alt');
+		$('#show_photo_id').val(photo_id);
+		$('#show_form').submit();
+	});
+});
+
+function ajax_search_photos(search_query){
+	$.post("search_photos.php", {sendValue: search_query}, function(data){
+		$('.search_result').html(data.returnValue);
+	}, "json");
+}
