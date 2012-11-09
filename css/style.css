@@ -4,8 +4,72 @@
 
 
 /* Photo List View */
+#color_filter{
+	position: absolute;
+	top: 42px;
+	width: 100%;
+	left: 0;
+	height: 42px;
+}
+
+#color_filter ul{
+	list-style: none;
+	opacity: 0.6;
+	padding: 0;
+	margin: 0;
+}
+
+#color_filter ul li{
+	display: inline-block;
+	width: 12.5%;
+	height: 42px;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#red{
+	background-color: red;
+}
+
+#orange{
+	background-color: orange;
+}
+
+#yellow{
+	background-color: yellow;
+}
+
+#green{
+	background-color: green;
+}
+
+#cyan{
+	background-color: #00FFFF;
+}
+
+#blue{
+	background-color: blue;
+}
+
+#magenta{
+	background-color: magenta;
+}
+
+#bwg{
+	background-color: #666;
+}
+
+li.selected{
+	border: 1px white;
+}
+
 .photo_list{
 	text-align: center;
+}
+
+.with_filter{
+	margin-top: 40px;
 }
 
 .photo_list_item{
@@ -42,6 +106,24 @@
 }
 
 /* Photo Detail View */
+#fav_button{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+}
+
+.faved{
+	background: url(../icons/newStar_selected.png);
+	background-size: 30px 30px;
+}
+
+.not_faved{
+	background: url(../icons/newStar_unselected.png);
+	background-size: 30px 30px;
+}
+
 .tags_display span{
 	padding: 0 10px;
 }

@@ -20,6 +20,7 @@
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 	<script src="js/quantize.js"></script>
     <script src="js/color-thief.js"></script>
+    <script src="js/classification.js"></script>
 
 	<script src="js/index.js"></script>
 </head/>
@@ -65,31 +66,22 @@
 			<a href="#search" data-icon="search">Search</a>		
 		</div>
 
-		<div data-role="content" class="photo_list">
-			<?php 
-				include("config.php");
-				session_start();
-				$user_id = $_SESSION['user_id'];
+		<div data-role="content" class="photo_list with_filter">
+			<div id="color_filter">
+				<ul>
+					<li id="red" class="selected"></li>
+					<li id="orange"></li>
+					<li id="yellow"></li>
+					<li id="green"></li>
+					<li id="cyan"></li>
+					<li id="blue"></li>
+					<li id="magenta"></li>
+					<li id="bwg"></li>
+				</ul>
+			</div>
+			<div class="photo_list_wrapper">
+			</div>
 
-				$query = "SELECT photo_id, save_path, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.user_id = $user_id AND Photos.palette_id = Palettes.palette_id ORDER BY Photos.ts DESC";
-				if($result = mysql_query($query, $link)){
-					while($row = mysql_fetch_array($result)){
-						echo "<div class=\"photo_list_item\">
-									<img src=\"".$row['save_path']."\" alt=\"".$row['photo_id']."\" class=\"photo\"/>
-								  <div class=\"palette\">
-								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
-								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
-								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
-								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
-								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
-								  </div>
-							  </div>";
-					}
-				}
-				else{
-					echo mysql_error($link);
-				}
-			?>
 		</div>
 		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
 			<input type="hidden" name="photo_id" id="show_photo_id"></input>
@@ -147,8 +139,9 @@
 			<h1>Favorites</h1>
 		</div>
 
-		<div data-role="content">
-			
+		<div data-role="content" class="photo_list">
+			<div class="photo_list_wrapper">
+			</div>		
 		</div>
 
 		<?php
@@ -170,10 +163,17 @@
 				session_start();
 				$photo_id = $_SESSION['photo_id'];
 
-				$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
+				$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4, color_5, is_fav FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
 				$result = mysql_query($query);
 				$row = mysql_fetch_array($result);
+				if($row['is_fav']==0){
+					$fav_class = "not_faved";
+				}
+				else{
+					$fav_class = "faved";
+				}
 				echo "<div class=\"photo_list_item\">
+									<div id=\"fav_button\" class=\"".$fav_class."\"></div>
 									<img src=\"".$row['save_path']."\" class=\"photo\"/>
 								  <div class=\"palette\">
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
@@ -311,6 +311,7 @@
 					<input type="hidden" name="color_3" id="color_3"></input>
 					<input type="hidden" name="color_4" id="color_4"></input>
 					<input type="hidden" name="color_5" id="color_5"></input>
+					<input type="hidden" name="category" id="category"></input>
 					<input type="hidden" name="lat" id="lat"></input>
 					<input type="hidden" name="lng" id="lng"></input>
 				</form>

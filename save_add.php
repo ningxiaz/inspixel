@@ -11,6 +11,7 @@
 	$color_3 = $_POST['color_3'];
 	$color_4 = $_POST['color_4'];
 	$color_5 = $_POST['color_5'];
+	$category = $_POST['category'];
 	$lat = $_POST['lat'];
 	$lng = $_POST['lng'];
 
@@ -36,7 +37,7 @@
 		}
 	}
 
-	$photo_query = "INSERT INTO Photos (save_path, palette_id, user_id, geolat, geolng, is_fav, frequency) VALUES ('$save_path', $palette_id, $user_id, $lat, $lng, 0, 0)";
+	$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, geolat, geolng, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, 0, 0)";
 
 	if(mysql_query($photo_query, $link)){
 			$photo_query = "SELECT * FROM Photos where save_path = '$save_path' and user_id = $user_id";
