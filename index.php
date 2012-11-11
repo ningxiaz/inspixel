@@ -21,6 +21,8 @@
 	<script src="js/quantize.js"></script>
     <script src="js/color-thief.js"></script>
     <script src="js/classification.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="js/location.js"></script>
 
 	<script src="js/index.js"></script>
 </head/>
@@ -184,6 +186,7 @@
 				$location_lat = $row['geolat'];
 				$location_lng = $row['geolng'];
 
+
 				echo "<p class=\"tags_display\">";
 				$query = "SELECT name FROM Tags, PhotosTags WHERE PhotosTags.photo_id = $photo_id AND Tags.tag_id = PhotosTags.tag_id";
 				if($result = mysql_query($query, $link)){
@@ -197,6 +200,7 @@
 				echo "</p>";
 				echo "<p>@ $location_lat, $location_lng</p>"
 			?>
+			
 		</div>
 
 		<div id="more_options" class="hidden_menu">
@@ -255,7 +259,7 @@
 						echo mysql_error($link);
 					}
 					echo "</p>";
-					echo "<p>@ $location_lat, $location_lng</p>";
+					echo "<p>@ $location_lat, $location_lng</p>"; //change variable to place name
 				}
 			?>
 		</div>
