@@ -46,6 +46,16 @@ $('#my').live('pageinit',function(event){
 	$('#bwg').live('tap',function(event) {
     	ajax_show_photos(7);
 	});
+
+	$('#settings').hide();
+
+	$('#settings_button').live('tap',function(event) {
+		$('#settings').toggle();
+	});
+
+	$('#cancel_settings').live('tap',function(event) {
+		$('#settings').hide();
+	});
 });
 
 //send category values to php via AJAX and display results
@@ -59,7 +69,7 @@ $('#details').live('pageinit',function(event){
 	$('#more_options').hide();
 
 	$('#more').live('tap',function(event) {
-		$('#more_options').show();
+		$('#more_options').toggle();
 	});
 
 	$('#cancel_button').live('tap',function(event) {

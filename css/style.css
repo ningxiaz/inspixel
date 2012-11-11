@@ -106,6 +106,10 @@ li.selected{
 	float: left;
 }
 
+#logout{
+	background-color: red;
+}
+
 /* Photo Detail View */
 #fav_button{
 	position: relative;
@@ -129,7 +133,7 @@ li.selected{
 	padding: 0 10px;
 }
 
-#more_options{
+.hidden_menu{
 	display: none;
 	position: fixed;
 	left: 0;

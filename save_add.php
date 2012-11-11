@@ -37,7 +37,13 @@
 		}
 	}
 
-	$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, geolat, geolng, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, 0, 0)";
+	if(IsNullOrEmpty($lat)||IsNullOrEmpty($lng)){
+		$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, NULL, NULL, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, 0, 0)";
+	}
+	else{
+		$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, geolat, geolng, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, 0, 0)";
+	}
+
 
 	if(mysql_query($photo_query, $link)){
 			$photo_query = "SELECT * FROM Photos where save_path = '$save_path' and user_id = $user_id";

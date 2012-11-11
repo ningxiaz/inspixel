@@ -45,7 +45,7 @@
 	<!-- Create Account Page -->
 	<div data-role="page" id="new">
 		<div data-role="content">
-			<h1>Create a new account, just in secondes!</h1>
+			<h1>Create a new account, just in seconds!</h1>
 			<div data-role="fieldcontain">
 				<form action="new_account.php" method="post" data-ajax="false">
 					<label for="email">Email:</label>
@@ -58,12 +58,21 @@
 		</div>
 	</div>
 
+	<!-- Logout Page -->
+	<div data-role="page" id="logout">
+		<div data-role="content">
+			<h1>Thanks for using Inspixel!</h1>
+			<a href="#login">Click here to re-login.</a>
+		</div>
+	</div>
+
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
 		<div data-role="header" data-position="fixed">
 			<!-- <a id="color" href="#" data-icon="custom">Color</a>	-->
 			<h1>My Inspirations</h1>
-			<a href="#search" data-icon="search">Search</a>		
+			<a href="#search" data-icon="search">Search</a>	
+			<a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>	
 		</div>
 
 		<div data-role="content" class="photo_list with_filter">
@@ -86,6 +95,11 @@
 		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
 			<input type="hidden" name="photo_id" id="show_photo_id"></input>
 		</form>
+
+		<div id="settings" class="hidden_menu">
+			<a href="#logout" class="option" data-role="button" id="logout">Log out</a>
+			<a href="#" class="option" data-role="button" id="cancel_settings">Cancel</a>
+		</div>
 
 		<?php
 			include("footer.php");
@@ -138,7 +152,7 @@
 		<div data-role="header"  data-position="fixed">
 			<a href="#" data-rel="back">Back</a>
 			<h1>Inspiration</h1>
-			<a href="#" id="more">...</a>
+			<a href="#" id="more">Edit</a>
 		</div>
 
 		<div data-role="content" class="photo_list">
@@ -185,7 +199,7 @@
 			?>
 		</div>
 
-		<div id="more_options">
+		<div id="more_options" class="hidden_menu">
 			<a href="#edit" class="option" data-role="button" id="edit_button">Edit</a>
 			<a href="#" class="option" data-role="button" id="delete_button">Delete</a>
 			<a href="#" class="option" data-role="button" id="cancel_button">Cancel</a>
@@ -283,8 +297,9 @@
 				function success(position){
 					$('#lat').val(position.coords.latitude);
 					$('#lng').val(position.coords.longitude);
-					//console.log(position.coords.latitude);
-					//console.log(position.coords.longitude);
+					if(position.coords.latitude==='' || position.coords.latitude===null || position.coords.latitude===undefined){
+						alert("Sorry, your location is currently unavailable, this picture will not have location information.");
+					}
 				}
 			</script>
 			<div data-role="fieldcontain">
