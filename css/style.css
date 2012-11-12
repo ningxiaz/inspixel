@@ -30,36 +30,51 @@
 }
 
 #red{
-	background-color: red;
+	/*background-color: red; */
+	background-image:url('colors/redSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #orange{
-	background-color: orange;
+	/*background-color: orange; */
+	background-image:url('colors/orangeSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #yellow{
-	background-color: yellow;
+	/*background-color: yellow; */
+	background-image:url('colors/yellowSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #green{
-	background-color: green;
+	/*background-color: green; */
+	background-image:url('colors/greenSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #cyan{
-	background-color: #00FFFF;
+	/*background-color: #00FFFF; */	
+	background-image:url('colors/cyanSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #blue{
-	background-color: blue;
+	/*background-color: blue; */
+	background-image:url('colors/blueSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #magenta{
-	background-color: magenta;
+	/*background-color: magenta; */
+	background-image:url('colors/violetSwatch.png');
+	background-repeat:no-repeat;
 }
 
 #bwg{
-	background-color: #666;
-}
+	/*background-color: #666; */
+	background-image:url('colors/bwgSwatch.png');
+	background-repeat:no-repeat;
 
 li.selected{
 	border: 1px black;
