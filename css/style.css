@@ -75,6 +75,7 @@
 	/*background-color: #666; */
 	background-image:url('colors/bwgSwatch.png');
 	background-repeat:no-repeat;
+}
 
 li.selected{
 	border: 1px black;
