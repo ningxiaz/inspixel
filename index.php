@@ -22,7 +22,6 @@
     <script src="js/color-thief.js"></script>
     <script src="js/classification.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="js/location.js"></script>
 
 	<script src="js/index.js"></script>
 </head/>
@@ -163,7 +162,7 @@
 				session_start();
 				$photo_id = $_SESSION['photo_id'];
 
-				$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4, color_5, is_fav FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
+				$query = "SELECT save_path, place, color_1, color_2, color_3, color_4, color_5, is_fav FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
 				$result = mysql_query($query);
 				$row = mysql_fetch_array($result);
 				if($row['is_fav']==0){
@@ -183,7 +182,7 @@
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
 								  </div>
 							  </div>";
-				$location_lat = $row['geolat'];
+				$place = $row['place'];
 				$location_lng = $row['geolng'];
 
 
@@ -198,7 +197,7 @@
 					echo mysql_error($link);
 				}
 				echo "</p>";
-				echo "<p>@ $location_lat, $location_lng</p>"
+				echo "<p>@ $place</p>"
 			?>
 			
 		</div>
@@ -229,7 +228,7 @@
 				$photo_id = $_SESSION['photo_id'];
 
 				if(isset($photo_id)){
-					$query = "SELECT save_path, geolat, geolng, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
+					$query = "SELECT save_path, place, color_1, color_2, color_3, color_4, color_5 FROM Photos, Palettes WHERE Photos.photo_id = $photo_id AND Photos.palette_id = Palettes.palette_id";
 					$result = mysql_query($query);
 					$row = mysql_fetch_array($result);
 					echo "<div class=\"photo_list_item\">
@@ -242,8 +241,7 @@
 								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
 									  </div>
 								  </div>";
-					$location_lat = $row['geolat'];
-					$location_lng = $row['geolng'];
+					$place = $row['place'];
 
 					echo "<div data-role=\"fieldcontain\"><form id=\"edit_form\" action=\"edit.php\" method=\"post\" data-ajax=\"false\">
 						<input type=\"text\" name=\"tag\" id=\"edit_tag\" value=\"";
@@ -259,7 +257,7 @@
 						echo mysql_error($link);
 					}
 					echo "</p>";
-					echo "<p>@ $location_lat, $location_lng</p>"; //change variable to place name
+					echo "<p>@ $place</p>";
 				}
 			?>
 		</div>
@@ -288,27 +286,11 @@
 				<div class="palette">
 				</div>
 			</div>
-			<script>
-				//get current location
-				if (navigator.geolocation) {
-		    		navigator.geolocation.getCurrentPosition(success, error);
-				}
-
-				function error(){
-					alert("Sorry, can't get your current location!");
-				}	
-
-				function success(position){
-					$('#lat').val(position.coords.latitude);
-					$('#lng').val(position.coords.longitude);
-					if(position.coords.latitude==='' || position.coords.latitude===null || position.coords.latitude===undefined){
-						alert("Sorry, your location is currently unavailable, this picture will not have location information.");
-					}
-				}
-			</script>
 			<div data-role="fieldcontain">
 				<form action="save_add.php" id="add_form" method="post" data-ajax="false">
 					<input type="text" name="tag" id="add_tag" placeholder="Tags seperated by commas"></input> <br/>
+					<select name="place" id="place">
+					</select>
 					<input type="hidden" name="color_1" id="color_1"></input>
 					<input type="hidden" name="color_2" id="color_2"></input>
 					<input type="hidden" name="color_3" id="color_3"></input>

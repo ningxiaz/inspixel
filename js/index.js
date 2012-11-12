@@ -140,7 +140,50 @@ $('#add').live('pageinit',function(event){
         $('#category').val(cat);
 
     });
+
+	//get current location
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(success, error);
+	}
+
+	function error(){
+		alert("Sorry, can't get your current location!");
+	}	
+
+	function success(position){
+		$('#lat').val(position.coords.latitude);
+		$('#lng').val(position.coords.longitude);
+		if(position.coords.latitude==='' || position.coords.latitude===null || position.coords.latitude===undefined){
+			alert("Sorry, your location is currently unavailable, this picture will not have location information.");
+		}
+		else{
+			getPlaces(position.coords.latitude, position.coords.longitude);
+		}
+	}
+
+
 });
+
+function getPlaces(lat, lng){
+	var geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, lng);
+
+        geocoder.geocode({'latLng': latlng}, function(results, status) {
+         	if (status == google.maps.GeocoderStatus.OK) {
+               if (results[1]) {
+                	console.log(results);
+                	    for (var i = 0; i < results.length; i++) {
+                	            var item = "<option value=\""+results[i].formatted_address+"\">"+results[i].formatted_address+"</option>";
+                	            $('#place').append(item);
+                	        };
+                	    } else {
+                	      alert('No results found');
+                	    }
+        	} else {
+               alert('Geocoder failed due to: ' + status);
+        	}
+        });
+}
 
 $('#edit').live('pageinit',function(event){
 	$('#save_edit').live('tap',function(event) {

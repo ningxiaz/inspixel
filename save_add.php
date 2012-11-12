@@ -14,6 +14,7 @@
 	$category = $_POST['category'];
 	$lat = $_POST['lat'];
 	$lng = $_POST['lng'];
+	$place = $_POST['place'];
 
 	$palette_query = "SELECT * FROM Palettes where color_1 = '$color_1' AND color_2 = '$color_2' AND color_3 = '$color_3' AND color_4 = '$color_4' AND color_5 = '$color_5'";
 	$result = mysql_query($palette_query);
@@ -37,11 +38,11 @@
 		}
 	}
 
-	if(IsNullOrEmpty($lat)||IsNullOrEmpty($lng)){
-		$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, NULL, NULL, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, 0, 0)";
+	if(!IsNullOrEmpty($lat) && !IsNullOrEmpty($lng)&& !IsNullOrEmpty($place)){
+		$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, geolat, geolng, place, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, '$place', 0, 0)";
 	}
 	else{
-		$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, geolat, geolng, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, $lat, $lng, 0, 0)";
+		$photo_query = "INSERT INTO Photos (save_path, palette_id, category, user_id, geolat, geolng, place, is_fav, frequency) VALUES ('$save_path', $palette_id, $category, $user_id, NULL, NULL, NULL, 0, 0)";
 	}
 
 
@@ -95,6 +96,7 @@
 			header('location:index.php#my');
 	}
 	else{
+		echo "$photo_query";
 		echo mysql_error($link);
 	}
 

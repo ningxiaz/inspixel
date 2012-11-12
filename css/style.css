@@ -170,6 +170,11 @@ li.selected{
 	height: 100px;
 }
 
+/* Add Page */
+#place option{
+	overflow: hidden;
+}
+
 /* Footer */
 .nav{
 	position: fixed !important;

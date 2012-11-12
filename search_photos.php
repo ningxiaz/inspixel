@@ -8,7 +8,7 @@
 
 		$returnValue = "";
 
-		$tag_query = "SELECT * FROM Tags WHERE name LIKE '%$search_query%'";
+		$tag_query = "SELECT * FROM Tags, Photos, PhotosTags WHERE Tags.name LIKE '%$search_query%' AND Photos.user_id = $user_id AND Photos.photo_id = PhotosTags.photo_id AND PhotosTags.tag_id = Tags.tag_id";
 
 		if($result = mysql_query($tag_query, $link)){
 			while($row = mysql_fetch_array($result)){
