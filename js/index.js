@@ -249,6 +249,9 @@ $('#fav').live('pageinit',function(event){
 });
 
 $('#search').live('pageinit',function(event){
+	//show all tags and photos by default
+	ajax_search_photos("");
+
 	//auto upload photo
 	$('#photo_input_search').change(function(){
 		$('#upload_form_search').submit();
