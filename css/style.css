@@ -2,6 +2,13 @@
 
 /* Login */
 
+li .highlight{
+	padding: 0px;
+	height: 42px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+
+}
 
 /* Photo List View */
 #color_filter{
@@ -21,7 +28,7 @@
 
 #color_filter ul li{
 	display: inline-block;
-	width: 12.5%;
+	width: 12.3%;
 	height: 42px;
 	float: left;
 	padding: 0;
