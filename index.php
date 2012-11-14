@@ -22,8 +22,27 @@
     <script src="js/color-thief.js"></script>
     <script src="js/classification.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
 
 	<script src="js/index.js"></script>
+
+	<script type="text/javascript">
+		YUI().use('node', function(Y) {
+    	var nodes = Y.all('#pix_filter li');
+
+    	var onClick = function(e) {
+        	nodes.removeClass('highlight');
+
+        	e.currentTarget.addClass('highlight'); // e.currentTarget === #pix_filter li 
+        	e.currentTarget.setStyle('border', '2px solid #220A29'); // e.container === #pix_filter
+
+        	nodes.filter(':not(.highlight)').setStyle('border', 'none');
+    	};
+
+    Y.one('#pix_filter').delegate('click', onClick, 'li');
+});
+</script>
+
 </head/>
 <body>
 	<!-- Login Page -->
@@ -78,7 +97,7 @@
 
 		<div data-role="content" class="photo_list with_filter">
 			<div id="color_filter">
-				<ul>
+				<ul id="pix_filter">
 					<li id="red" class="selected"></li>
 					<li id="orange"></li>
 					<li id="yellow"></li>
@@ -172,8 +191,10 @@
 					$fav_class = "faved";
 				}
 				echo "<div class=\"photo_list_item\">
-									<div id=\"fav_button\" class=\"".$fav_class."\"></div>
-									<img src=\"".$row['save_path']."\" class=\"photo\"/>
+									<div class=\"image_click\">
+										<div id=\"fav_button\" class=\"".$fav_class."\"></div>
+										<img src=\"".$row['save_path']."\" class=\"photo\"/>
+									</div>
 								  <div class=\"palette\">
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
