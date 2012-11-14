@@ -11,6 +11,7 @@
     <title>Inspixel</title>
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog.min.css" /> 
 
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
@@ -18,6 +19,7 @@
 	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/simpledialog/latest/jquery.mobile.simpledialog2.min.js"></script>
 	<script src="js/quantize.js"></script>
     <script src="js/color-thief.js"></script>
     <script src="js/classification.js"></script>
@@ -102,9 +104,20 @@
 			<a href="#" class="option" data-role="button" id="cancel_settings">Cancel</a>
 		</div>
 
-		<?php
-			include("footer.php");
-		?>
+		<div data-role="footer" class="nav" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.php#my"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<form id="upload_form_my" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+							<div id="input_wrapper">
+								<input type="file" name="file" id="photo_input_my" size="100"/>
+							</div>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+						</form>
+						<li><a href="index.php#fav"><img class="tab_icon" src="icons/star1.png"/></a></li>
+					</ul>
+				</div>
+		</div>
 	</div>
 
 	<!-- Tag Searching Page -->
@@ -126,9 +139,20 @@
 
 		</div>
 
-		<?php
-			include("footer.php");
-		?>
+		<div data-role="footer" class="nav" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.php#my"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<form id="upload_form_search" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+							<div id="input_wrapper">
+								<input type="file" name="file" id="photo_input_search" size="100"/>
+							</div>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+						</form>
+						<li><a href="index.php#fav"><img class="tab_icon" src="icons/star1.png"/></a></li>
+					</ul>
+				</div>
+		</div>
 	</div>
 
 	<!-- Favorited Photos Page -->
@@ -143,9 +167,20 @@
 			</div>		
 		</div>
 
-		<?php
-			include("footer.php");
-		?>
+		<div data-role="footer" class="nav" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.php#my"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<form id="upload_form_fav" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+							<div id="input_wrapper">
+								<input type="file" name="file" id="photo_input_fav" size="100"/>
+							</div>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+						</form>
+						<li><a href="index.php#fav"><img class="tab_icon" src="icons/star1.png"/></a></li>
+					</ul>
+				</div>
+		</div>
 	</div>
 
 	<!-- Photo Details Page -->
@@ -174,18 +209,17 @@
 				echo "<div class=\"photo_list_item\">
 									<div id=\"fav_button\" class=\"".$fav_class."\"></div>
 									<img src=\"".$row['save_path']."\" class=\"photo\"/>
+								</div>
 								  <div class=\"palette\">
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
-								  </div>
-							  </div>";
+								  </div>";
 				$place = $row['place'];
-				$location_lng = $row['geolng'];
 
-
+				echo "<p class=\"color_value\"></p>";
 				echo "<p class=\"tags_display\">";
 				$query = "SELECT name FROM Tags, PhotosTags WHERE PhotosTags.photo_id = $photo_id AND Tags.tag_id = PhotosTags.tag_id";
 				if($result = mysql_query($query, $link)){
@@ -208,9 +242,20 @@
 			<a href="#" class="option" data-role="button" id="cancel_button">Cancel</a>
 		</div>
 
-		<?php
-			include("footer.php");
-		?>
+		<div data-role="footer" class="nav" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="index.php#my"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<form id="upload_form_details" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+							<div id="input_wrapper">
+								<input type="file" name="file" id="photo_input_details" size="100"/>
+							</div>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+						</form>
+						<li><a href="index.php#fav"><img class="tab_icon" src="icons/star1.png"/></a></li>
+					</ul>
+				</div>
+		</div>
 	</div>
 
 	<!-- Photo Edit Details Page -->
@@ -233,14 +278,14 @@
 					$row = mysql_fetch_array($result);
 					echo "<div class=\"photo_list_item\">
 										<img src=\"".$row['save_path']."\" class=\"photo\"/>
+									</div>
 									  <div class=\"palette\">
 									  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
 								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
 								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
 								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
 								  		<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
-									  </div>
-								  </div>";
+									  </div>";
 					$place = $row['place'];
 
 					echo "<div data-role=\"fieldcontain\"><form id=\"edit_form\" action=\"edit.php\" method=\"post\" data-ajax=\"false\">
@@ -261,10 +306,6 @@
 				}
 			?>
 		</div>
-
-		<?php
-			include("footer.php");
-		?>
 	</div>
 
 	<!-- Add New Photo Page -->
@@ -276,16 +317,6 @@
 		</div>
 
 		<div data-role="content" class="photo_list">
-			<div class="photo_list_item">
-				<?php 
-					session_start();
-					$photo_name = $_SESSION['photo_name'];
-					echo "<img src=\"photos/$photo_name\" class=\"new_photo\"/>";
-				?>
-				
-				<div class="palette">
-				</div>
-			</div>
 			<div data-role="fieldcontain">
 				<form action="save_add.php" id="add_form" method="post" data-ajax="false">
 					<input type="text" name="tag" id="add_tag" placeholder="Tags seperated by commas"></input> <br/>
@@ -301,11 +332,16 @@
 					<input type="hidden" name="lng" id="lng"></input>
 				</form>
 			</div>
+			<div class="photo_list_item">
+				<div class="palette">
+				</div>
+				<?php 
+					session_start();
+					$photo_name = $_SESSION['photo_name'];
+					echo "<img src=\"photos/$photo_name\" class=\"new_photo\"/>";
+				?>
+			</div>
 		</div>
-
-		<?php
-			include("footer.php");
-		?>
 	</div>
 </body>
 </html>

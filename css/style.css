@@ -98,6 +98,7 @@ li.selected{
 	-webkit-box-shadow: 1px 0px 8px rgba(50, 50, 50, 0.5);
 	-moz-box-shadow:    1px 0px 8px rgba(50, 50, 50, 0.5);
 	box-shadow:         1px 0px 8px rgba(50, 50, 50, 0.5);
+	position: relative;
 }
 
 .photo_list .photo{
@@ -113,6 +114,7 @@ li.selected{
 	height: 50px;
 	padding: 0;
 	margin: 0 auto;
+	padding-bottom: 20px;
 }
 
 .palette .swatch {
@@ -128,21 +130,21 @@ li.selected{
 
 /* Photo Detail View */
 #fav_button{
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 40px;
-	height: 40px;
+	position: absolute;
+	top: 15px;
+	left: 5px;
+	width: 30px;
+	height: 30px;
 }
 
 .faved{
-	background: url(../icons/newStar_selected.png);
-	background-size: 40px 40px;
+	background: url(../icons/star_selected.png) no-repeat;
+	background-size: 30px 30px;
 }
 
 .not_faved{
-	background: url(../icons/newStar_unselected.png);
-	background-size: 40px 40px;
+	background: url(../icons/star_unselected.png) no-repeat;
+	background-size: 30px 30px;
 }
 
 .tags_display span{
@@ -197,25 +199,8 @@ li.selected{
 }
 
 /* Icons */
-#color .ui-btn {
-	height: 40px;
-}
 
-#color .ui-icon{
-	background: url(../icons/color.png) !important;
-	width: 28px;
-	height: 28px;
-}
-
-#fav_icon{
-	width: 40px;
-}
-
-#photo_icon{
-	width: 40px;
-}
-
-#ins_icon{
+.tab_icon{
 	width: 40px;
 }
 

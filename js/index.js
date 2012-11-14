@@ -1,13 +1,11 @@
-$(document).ready(function(){
-	$('#photo').change(function(){
-		$('#upload_form').submit();
-	});	
-});
-
-
 $('#my').live('pageinit',function(event){
 	//show all photos by default
 	ajax_show_photos(-1);
+
+	//auto upload photo
+	$('#photo_input_my').change(function(){
+		$('#upload_form_my').submit();
+	});	
 
   	$('.photo_list_item').live('tap',function(event) {
 		var photo_id = $(this).find('.photo').attr('alt');
@@ -56,6 +54,18 @@ $('#my').live('pageinit',function(event){
 	$('#cancel_settings').live('tap',function(event) {
 		$('#settings').hide();
 	});
+
+	$('.swatch').live('tap',function(event) {
+		var rgb_string = $(this).css("background-color");
+		$('<div>').simpledialog2({
+		    mode: 'blank',
+		    headerText: 'Color Value',
+		    headerClose: true,
+		    blankContent : 
+		      "<ul data-role='listview'><li>"+colorToHex(rgb_string)+"</li></ul>"+
+		      "<a rel='close' data-role='button' href='#'>Close</a>"
+		  })
+	});
 });
 
 //send category values to php via AJAX and display results
@@ -66,6 +76,11 @@ function ajax_show_photos(val){
 }
 
 $('#details').live('pageinit',function(event){
+	//auto upload photo
+	$('#photo_input_details').change(function(){
+		$('#upload_form_details').submit();
+	});	
+
 	$('#more_options').hide();
 
 	$('#more').live('tap',function(event) {
@@ -102,7 +117,33 @@ $('#details').live('pageinit',function(event){
 			});
 		}
 	});
+
+	$('.swatch').live('tap',function(event) {
+		var rgb_string = $(this).css("background-color");
+		$('<div>').simpledialog2({
+		    mode: 'blank',
+		    headerText: 'Color Value',
+		    headerClose: true,
+		    blankContent : 
+		      "<ul data-role='listview'><li>"+colorToHex(rgb_string)+"</li></ul>"+
+		      "<a rel='close' data-role='button' href='#'>Close</a>"
+		  })
+	});
 });
+
+function colorToHex(color) {
+    if (color.substr(0, 1) === '#') {
+        return color;
+    }
+    var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(color);
+    
+    var red = parseInt(digits[2]);
+    var green = parseInt(digits[3]);
+    var blue = parseInt(digits[4]);
+    
+    var rgb = blue | (green << 8) | (red << 16);
+    return digits[1] + '#' + rgb.toString(16);
+};
 
 $('#add').live('pageinit',function(event){
 	$('#add_done').click(function(){
@@ -195,6 +236,11 @@ $('#fav').live('pageinit',function(event){
 	//show faved photos
 	ajax_show_photos(8);
 
+	//auto upload photo
+	$('#photo_input_fav').change(function(){
+		$('#upload_form_fav').submit();
+	});	
+
 	$('.photo_list_item').live('tap',function(event) {
 		var photo_id = $(this).find('.photo').attr('alt');
 		$('#show_photo_id').val(photo_id);
@@ -203,6 +249,11 @@ $('#fav').live('pageinit',function(event){
 });
 
 $('#search').live('pageinit',function(event){
+	//auto upload photo
+	$('#photo_input_search').change(function(){
+		$('#upload_form_search').submit();
+	});	
+
 	$('#search_tag').keyup(function(){
 		var search_query = $(this).val();
 		console.log(search_query);

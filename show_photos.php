@@ -25,14 +25,14 @@
 			while($row = mysql_fetch_array($result)){
 				$returnValue = $returnValue . "<div class=\"photo_list_item\">
 							<img src=\"".$row['save_path']."\" alt=\"".$row['photo_id']."\" class=\"photo\"/>
+							</div>
 						  <div class=\"palette\">
 						  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
 						  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
 						  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_3'].");\"></div>
 						  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_4'].");\"></div>
 						  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_5'].");\"></div>
-						  </div>
-					  </div>";
+						  </div>";
 			}
 
 			echo json_encode(array("returnValue"=>$returnValue));
