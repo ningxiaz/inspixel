@@ -126,7 +126,7 @@
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="index.php#my"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<li><a id="reset"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
 						<form id="upload_form_my" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
 								<input type="file" name="file" id="photo_input_my" size="100"/>
@@ -226,16 +226,9 @@
 					$fav_class = "faved";
 				}
 				echo "<div class=\"photo_list_item\">
-<<<<<<< HEAD
 									<div id=\"fav_button\" class=\"".$fav_class."\"></div>
 									<img src=\"".$row['save_path']."\" class=\"photo\"/>
 								</div>
-=======
-									<div class=\"image_click\">
-										<div id=\"fav_button\" class=\"".$fav_class."\"></div>
-										<img src=\"".$row['save_path']."\" class=\"photo\"/>
-									</div>
->>>>>>> 07e92bed03aec4aca579e8374c280725d941a977
 								  <div class=\"palette\">
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_1'].");\"></div>
 								  	<div class=\"swatch\" style=\"background-color: rgb(".$row['color_2'].");\"></div>
