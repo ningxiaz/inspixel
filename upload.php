@@ -7,7 +7,12 @@
 		if(move_uploaded_file($_FILES["file"]["tmp_name"], "photos/" . $filename)){
 			session_start();
 			$_SESSION['photo_name'] = $filename;
-			header("location: index.php#add");
+			header("location: add.php");
+		}
+		else{
+			session_start();
+			$_SESSION['error'] = "Upload photo error.";
+			header('location:error.php');
 		}
 	}
 ?>

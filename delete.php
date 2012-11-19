@@ -9,13 +9,17 @@
 	if(mysql_query($query, $link)){
 		$query = "DELETE FROM PhotosTags WHERE photo_id = $photo_id";
 		if(mysql_query($query, $link)){
-			header('location:index.php#my');
+			header('location:my.php');
 		}
 		else{
-			echo mysql_error($link);
+			session_start();
+			$_SESSION['error'] = mysql_error($link);
+			header('location:error.php');
 		}
 	}
 	else{
-		echo mysql_error($link);
+		session_start();
+		$_SESSION['error'] = mysql_error($link);
+		header('location:error.php');
 	}
 ?>

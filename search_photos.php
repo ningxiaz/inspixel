@@ -30,7 +30,9 @@
 			echo json_encode(array("returnValue"=>$returnValue));
 		}
 		else{
-			mysql_error($link);
+			session_start();
+			$_SESSION['error'] = mysql_error($link);
+			header('location:error.php');
 		}
 	}
 ?>

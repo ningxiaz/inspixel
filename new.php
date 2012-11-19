@@ -29,18 +29,17 @@
 	<script src="js/index.js"></script>
 </head/>
 <body>
-	<!-- Login Page -->
-	<div data-role="page" id="login">
+	<!-- Create Account Page -->
+	<div data-role="page" id="new">
 		<div data-role="content">
-			<h1>Hi, Welcome to Inspixel!</h1>
+			<h1>Create a new account, just in seconds!</h1>
 			<div data-role="fieldcontain">
-				<form action="login.php" method="post" data-ajax="false">
+				<form action="new_account.php" method="post" data-ajax="false">
 					<label for="email">Email:</label>
-					<input type="text" name="login_email" id="login_email">
+					<input type="text" name="new_email" id="new_email">
 					<label for="password">Password:</label>
-					<input type="password" name="login_password" id="login_password"><br/>
-					<input type="submit" value="Login"><br/>
-					<a href="new.php">No account yet? Create one!</a>
+					<input type="password" name="new_password" id="new_password"><br/>
+					<input type="submit" value="Creat Account" >
 				</form>
 			</div>
 		</div>

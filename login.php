@@ -9,12 +9,15 @@
 	$rows = mysql_num_rows($result);
 
 	if($rows==0){
-		header("location:index.php#login");
+		header("location:index.php");
 	}
 	else{
 		$array = mysql_fetch_array($result);
+		
+		//set the max life time of session to 8 hours
+		ini_set(’session.gc_maxlifetime’, 8*60*60);
 		session_start();
 		$_SESSION['user_id'] = $array['user_id'];
-		header("location:index.php#my");
+		header("location:my.php");
 	}
 ?>

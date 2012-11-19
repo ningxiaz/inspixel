@@ -1,14 +1,38 @@
 $('#my').live('pageinit',function(event){
 	//show all photos by default
-	ajax_show_photos(-1);
+	$.post("show_photos.php", {sendValue: -1}, function(data){
+		$('.photo_list_wrapper').html(data.returnValue);
+
+		//if no photos yet, show instructions
+		var num_photos = $('.photo_list_wrapper .photo_list_item').children().length;
+		if(num_photos==0){
+			$("#instruction").popup({history:false,transition:"fade"});
+			
+			$( "#instruction" ).on({
+			popupbeforeposition: function() {
+			    var h = $( window ).height();
+			        w = $( window ).width();
+			
+			    $( "#instruction" ).css( "height", h );
+			    $( "#instruction" ).css( "width", w );
+			}
+			});
+			$("#instruction").popup("open");
+
+			//tap anywhere to dismiss the instructions
+			$('#instruction').live('tap', function(event){
+				$('#instruction').popup('close');
+			});
+		}
+	}, "json");
 
 	//auto upload photo
 	$('#photo_input_my').change(function(){
 		$('#upload_form_my').submit();
 	});	
 
-  	$('.photo_list_item').live('tap',function(event) {
-		var photo_id = $(this).find('.photo').attr('alt');
+  	$('.photo_list_item img').live('tap',function(event) {
+		var photo_id = $(this).attr('alt');
 		$('#show_photo_id').val(photo_id);
 		$('#show_form').submit();
 	});
@@ -55,16 +79,8 @@ $('#my').live('pageinit',function(event){
 		$('#settings').hide();
 	});
 
-	$('.swatch').live('tap',function(event) {
-		var rgb_string = $(this).css("background-color");
-		$('<div>').simpledialog2({
-		    mode: 'blank',
-		    headerText: 'Color Value',
-		    headerClose: true,
-		    blankContent : 
-		      "<ul data-role='listview'><li>"+colorToHex(rgb_string)+"</li></ul>"+
-		      "<a rel='close' data-role='button' href='#'>Close</a>"
-		  })
+	$('#reset').live('tap',function(event) {
+		location.reload();
 	});
 });
 
@@ -105,29 +121,25 @@ $('#details').live('pageinit',function(event){
 
 		//if the photo is not faved, fav it
 		if(button.hasClass('not_faved')){
-			$.post("fav.php", {sendValue: 1}, function(){
+			$.post("fav_photo.php", {sendValue: 1}, function(){
 				button.addClass('faved').removeClass('not_faved');
 			});
 		}
 
 		//otherwise, unfav it
 		else if(button.hasClass('faved')){
-			$.post("fav.php", {sendValue: 0}, function(){
+			$.post("fav_photo.php", {sendValue: 0}, function(){
 				button.addClass('not_faved').removeClass('faved');
 			});
 		}
 	});
 
 	$('.swatch').live('tap',function(event) {
-		var rgb_string = $(this).css("background-color");
-		$('<div>').simpledialog2({
-		    mode: 'blank',
-		    headerText: 'Color Value',
-		    headerClose: true,
-		    blankContent : 
-		      "<ul data-role='listview'><li>"+colorToHex(rgb_string)+"</li></ul>"+
-		      "<a rel='close' data-role='button' href='#'>Close</a>"
-		  })
+		var rgb_string = $(this).css('background-color');
+		$('#color_popup p').html("Color value: "+colorToHex(rgb_string));
+		$("#color_popup").popup({history:false,transition:"fade"});
+		$("#color_popup").popup({positionTo: "origin"});
+		$("#color_popup").popup('open');
 	});
 });
 
@@ -241,8 +253,8 @@ $('#fav').live('pageinit',function(event){
 		$('#upload_form_fav').submit();
 	});	
 
-	$('.photo_list_item').live('tap',function(event) {
-		var photo_id = $(this).find('.photo').attr('alt');
+	$('.photo_list_item img').live('tap',function(event) {
+		var photo_id = $(this).attr('alt');
 		$('#show_photo_id').val(photo_id);
 		$('#show_form').submit();
 	});

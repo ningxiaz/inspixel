@@ -22,16 +22,23 @@
 	<script src="js/index.js"></script>
 </head/>
 <body>
-	<!-- Favorited Photos Page -->
-	<div data-role="page" id="fav">
+	<!-- Tag Searching Page -->
+	<div data-role="page" id="search">
 		<div data-role="header" data-position="fixed">
 			<a href="my.php">Back</a>
-			<h1>Favorites</h1>
+			<h1>Search Results</h1>
 		</div>
 
-		<div data-role="content" class="photo_list">
-			<div class="photo_list_wrapper">
-			</div>		
+		<div data-role="content">
+			<div data-role="fieldcontain">
+				<form action="search.php" method="post">
+					<input type="text" name="tag" id="search_tag">
+				</form>
+			</div>
+
+			<div class="search_result">
+			</div>
+
 		</div>
 
 		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
@@ -42,13 +49,13 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="my.php"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
-						<form id="upload_form_fav" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+						<form id="upload_form_search" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
-								<input type="file" name="file" id="photo_input_fav" size="100"/>
+								<input type="file" name="file" id="photo_input_search" size="100"/>
 							</div>
 							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
 						</form>
-						<li><a href="fav.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/star1.png"/></a></li>
+						<li><a href="fav.php"><img class="tab_icon" src="icons/star1.png"/></a></li>
 					</ul>
 				</div>
 		</div>

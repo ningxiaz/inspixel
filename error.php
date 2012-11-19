@@ -1,11 +1,4 @@
-<?php
- 	session_start(); 
-
- 	//If the user has already logged in, redirect to my inspiration page
- 	if(isset($_SESSION['user_id'])){
- 		header('location:my.php');
- 	}
-?>
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,24 +18,20 @@
 	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
-	
-	<script src="js/index.js"></script>
-</head/>
+	</head/>
 <body>
-	<!-- Login Page -->
-	<div data-role="page" id="login">
+	<!-- Logout Page -->
+	<div data-role="page" id="error">
 		<div data-role="content">
-			<h1>Hi, Welcome to Inspixel!</h1>
-			<div data-role="fieldcontain">
-				<form action="login.php" method="post" data-ajax="false">
-					<label for="email">Email:</label>
-					<input type="text" name="login_email" id="login_email">
-					<label for="password">Password:</label>
-					<input type="password" name="login_password" id="login_password"><br/>
-					<input type="submit" value="Login"><br/>
-					<a href="new.php">No account yet? Create one!</a>
-				</form>
-			</div>
+			<h1>Oops, something goes wrong...</h1>
+			<?php
+				session_start();
+				if(isset($_SESSION['error'])){
+					echo "<h3>Please kindly send the following report to ningxiaz at stanford.edu</h3>
+				<p id=\"error_report\"> ".$_SESSION['error']."</p>";
+				}
+			?>
+			<a href="my.php">Go back to my inspiration page</a>
 		</div>
 	</div>
 </body>

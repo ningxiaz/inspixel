@@ -34,7 +34,9 @@
 			$palette_id = $array['palette_id'];
 		}
 		else{
-			echo mysql_error($link);
+			session_start();
+			$_SESSION['error'] = mysql_error($link);
+			header('location:error.php');
 		}
 	}
 
@@ -93,11 +95,12 @@
 				}
 			}
 
-			header('location:index.php#my');
+			header('location:my.php');
 	}
 	else{
-		echo "$photo_query";
-		echo mysql_error($link);
+		session_start();
+		$_SESSION['error'] = mysql_error($link);
+		header('location:error.php');
 	}
 
 ?>

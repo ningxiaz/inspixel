@@ -135,11 +135,45 @@ li.selected{
 	background-color: red;
 }
 
+/* Instruction Popup */
+#ins_pic_1{
+	height:352px;
+	width:320px
+}
+
+#ins_pic_2{
+	width:256px;
+	height:136px
+}
+        
+#instruction {
+    border: 1px solid #000;
+    border-right: none;
+    background: rgba(0,0,0,.5);
+    margin: -1px 0;
+}
+        
+#instruction .ui-btn {
+    margin: 2em 15px;
+}
+
+#filter_instruction
+{
+    margin:0;
+}
+
+#camera_instruction
+{
+   	position: absolute;
+   	left: 50px;
+   	bottom: 50px;
+}
+
 /* Photo Detail View */
 #fav_button{
 	position: absolute;
 	top: 15px;
-	left: 5px;
+	right: 5px;
 	width: 30px;
 	height: 30px;
 }
