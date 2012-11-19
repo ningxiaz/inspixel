@@ -261,3 +261,7 @@ li.selected{
 	z-index: -100;
 	position: relative;
 }
+
+.ui-popup-containter{
+	opacity: .6;
+}
