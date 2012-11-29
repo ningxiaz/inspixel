@@ -106,6 +106,8 @@
 			<a href="#" class="option" data-role="button" id="cancel_button">Cancel</a>
 		</div>
 
+		<div class="loader"></div>
+
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>

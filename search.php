@@ -58,6 +58,8 @@
 			<input type="hidden" name="photo_id" id="show_photo_id"></input>
 		</form>
 
+		<div class="loader"></div>
+
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>

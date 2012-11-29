@@ -11,8 +11,11 @@ $('#new').live('pageinit',function(event){
 });
 
 $('#my').live('pageinit',function(event){
+	$('loader').show();
+
 	//show all photos by default
 	$.post("show_photos.php", {sendValue: -1}, function(data){
+		$('.loader').hide();
 		$('.photo_list_wrapper').html(data.returnValue);
 
 		//if no photos yet, show instructions
@@ -40,6 +43,7 @@ $('#my').live('pageinit',function(event){
 
 	//auto upload photo
 	$('#photo_input_my').change(function(){
+		$('.loader').show();
 		$('#upload_form_my').submit();
 	});	
 
@@ -101,14 +105,27 @@ $('#my').live('pageinit',function(event){
 
 //send category values to php via AJAX and display results
 function ajax_show_photos(val){
+	$('.no_photo').hide();
+	$('.loader').show();
 	$.post("show_photos.php", {sendValue: val}, function(data){
+		$('.loader').hide();
 		$('.photo_list_wrapper').html(data.returnValue);
+
+		//check to see if there's no photo returned
+		
+		var num_photos = $('.photo_list_wrapper .photo_list_item').children().length;
+		if(num_photos==0){
+			$('.no_photo').show();
+		}
+
 	}, "json");
 }
 
 $('#details').live('pageinit',function(event){
+
 	//auto upload photo
 	$('#photo_input_details').change(function(){
+		//$('loader').show();
 		$('#upload_form_details').submit();
 	});	
 
@@ -136,15 +153,19 @@ $('#details').live('pageinit',function(event){
 
 		//if the photo is not faved, fav it
 		if(button.hasClass('not_faved')){
+			$('loader').show();
 			$.post("fav_photo.php", {sendValue: 1}, function(){
 				button.addClass('faved').removeClass('not_faved');
+				$('loader').hide();
 			});
 		}
 
 		//otherwise, unfav it
 		else if(button.hasClass('faved')){
+			$('loader').show();
 			$.post("fav_photo.php", {sendValue: 0}, function(){
 				button.addClass('not_faved').removeClass('faved');
+				$('loader').hide();
 			});
 		}
 	});
@@ -209,6 +230,21 @@ $('#add').live('pageinit',function(event){
 
     });
 
+	$('#flip').change(function(){
+		if($(this).val() == 'nope'){
+			$('.ui-select').fadeOut();
+			$('#lat').val(null);
+			$('#lng').val(null);
+			$('#place').val(null);
+		}
+		else{
+			show_location_option();
+		}
+	});
+
+});
+
+function show_location_option(){
 	//get current location
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(success, error);
@@ -228,9 +264,7 @@ $('#add').live('pageinit',function(event){
 			getPlaces(position.coords.latitude, position.coords.longitude);
 		}
 	}
-
-
-});
+}
 
 function getPlaces(lat, lng){
 	var geocoder = new google.maps.Geocoder();
@@ -243,6 +277,8 @@ function getPlaces(lat, lng){
                 	    for (var i = 0; i < results.length; i++) {
                 	            var item = "<option value=\""+results[i].formatted_address+"\">"+results[i].formatted_address+"</option>";
                 	            $('#place').append(item);
+                	            $('#place').selectmenu("refresh");
+                	            $('.ui-select').fadeIn();
                 	        };
                 	    } else {
                 	      alert('No results found');
@@ -255,6 +291,7 @@ function getPlaces(lat, lng){
 
 $('#edit').live('pageinit',function(event){
 	$('#save_edit').live('tap',function(event) {
+		$('loader').show();
 		$('#edit_form').submit();
 	});
 });
@@ -265,6 +302,7 @@ $('#fav').live('pageinit',function(event){
 
 	//auto upload photo
 	$('#photo_input_fav').change(function(){
+		$('loader').show();
 		$('#upload_form_fav').submit();
 	});	
 
@@ -276,17 +314,21 @@ $('#fav').live('pageinit',function(event){
 });
 
 $('#search').live('pageinit',function(event){
+	//$('loader').show();
+
 	//show all tags and photos by default
 	ajax_search_photos("");
 
 	//auto upload photo
 	$('#photo_input_search').change(function(){
+		$('loader').show();
 		$('#upload_form_search').submit();
 	});	
 
 	$('#search_tag').keyup(function(){
+		//$('loader').show();
 		var search_query = $(this).val();
-		console.log(search_query);
+		//console.log(search_query);
 		ajax_search_photos(search_query);
 	});
 
@@ -300,5 +342,6 @@ $('#search').live('pageinit',function(event){
 function ajax_search_photos(search_query){
 	$.post("search_photos.php", {sendValue: search_query}, function(data){
 		$('.search_result').html(data.returnValue);
+		//$('loader').hide();
 	}, "json");
 }

@@ -199,6 +199,7 @@ $('#color').live('pageinit',function(event){
 
     //auto upload photo
     $('#photo_input_color').change(function(){
+        $('.loader').show();
         $('#upload_form_color').submit();
     }); 
 
@@ -250,48 +251,56 @@ $('#color').live('pageinit',function(event){
         }, "json");
 
     $.post("show_photos.php", {sendValue: 0}, function(data){
+            $('.loader').hide();
             $('#redUl').html(data.returnValue);
             var num_photos = $('#redUl .photo_list_item').children().length;
             $('#redUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 1}, function(data){
+            $('.loader').hide();
             $('#orangeUl').html(data.returnValue);
             var num_photos = $('#orangeUl .photo_list_item').children().length;
             $('#orangeUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 2}, function(data){
+            $('.loader').hide();
             $('#yellowUl').html(data.returnValue);
             var num_photos = $('#yellowUl .photo_list_item').children().length;
             $('#yellowUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 3}, function(data){
+            $('.loader').hide();
             $('#greenUl').html(data.returnValue);
             var num_photos = $('#greenUl .photo_list_item').children().length;
             $('#greenUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 4}, function(data){
+            $('.loader').hide();
             $('#cyansUl').html(data.returnValue);
             var num_photos = $('#cyansUl .photo_list_item').children().length;
             $('#cyansUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 5}, function(data){
+            $('.loader').hide();
             $('#blueUl').html(data.returnValue);
             var num_photos = $('#blueUl .photo_list_item').children().length;
             $('#blueUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 6}, function(data){
+            $('.loader').hide();
             $('#magnentassUl').html(data.returnValue);
             var num_photos = $('#magnentassUl .photo_list_item').children().length;
             $('#magnentassUl').css("width", 60*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 7}, function(data){
+            $('.loader').hide();
             $('#blackAndWhiteUl').html(data.returnValue);
             var num_photos = $('#blackAndWhiteUl .photo_list_item').children().length;
             $('#blackAndWhiteUl').css("width", 60*num_photos);
@@ -311,7 +320,7 @@ $('#color').live('pageinit',function(event){
             <a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>    
         </div>
 
-    	<div data-role="content" id="colorViewContent">
+    	<div data-role="content" id="colorViewContent with_loader">
     		<div class="colorList" id="redList">
     				<div class="colorSelector" id="redSelector">
     				</div>
@@ -412,6 +421,8 @@ $('#color').live('pageinit',function(event){
 
         <div id="hidden_all_photos">
         </div>
+
+        <div class="loader"></div>
 
         <div data-role="footer" class="nav" data-position="fixed">
                 <div data-role="navbar">

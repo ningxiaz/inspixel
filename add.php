@@ -51,7 +51,13 @@
 			<div data-role="fieldcontain">
 				<form action="save_add.php" id="add_form" method="post" data-ajax="false">
 					<input type="text" name="tag" id="add_tag" placeholder="Tags seperated by commas"></input> <br/>
-					<label for="place" class="select">Choose Location:</label>
+					<div data-role="fieldcontain" id="flip_wrapper">
+						<label for="flip" id="flip_label">Add location:</label>
+							<select name="flip" id="flip" data-role="slider">
+								<option value="nope">Nope</option>
+								<option value="yep">Yep</option>
+							</select> 
+					</div>
 					<select name="place" id="place">
 					</select>
 					<input type="hidden" name="color_1" id="color_1"></input>

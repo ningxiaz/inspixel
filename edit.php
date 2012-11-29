@@ -43,6 +43,8 @@
 			<a href="#" id="save_edit">Save</a>
 		</div>
 
+		<div class="loader"></div>
+
 		<div data-role="content" class="photo_list">
 			<?php
 				include("config.php");

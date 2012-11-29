@@ -61,7 +61,7 @@
 			<a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>	
 		</div>
 
-		<div data-role="content" class="photo_list with_filter">
+		<div data-role="content" class="photo_list with_filter with_loader">
 			<div id="color_filter">
 				<ul id="pix_filter">
 					<li id="red" class="selected"></li>
@@ -99,6 +99,12 @@
                   <img src="icons/description_2.png" id="ins_pic_2"/>
             </div>
         </div>
+
+        <div class="loader"></div>
+
+        <p class="no_photo">
+        	Currently there's no picture in this category. Try taking more pictures!
+        </p>
 
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
