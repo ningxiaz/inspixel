@@ -9,6 +9,8 @@
 	$rows = mysql_num_rows($result);
 
 	if($rows==0){
+		session_start();
+		$_SESSION['account_error'] = "Sorry, you've entered the wrong email or password.";
 		header("location:index.php");
 	}
 	else{

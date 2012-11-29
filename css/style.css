@@ -2,15 +2,118 @@
 
 /* Login */
 
-li .highlight{
+.account
+{
 	padding: 0px;
-	height: 42px;
-	padding: 0px 0px 0px 0px;
-	margin: 0px 0px 0px 0px;
+    margin:0px;
+    padding-bottom: 60px;
 
 }
+.upperline
+{
+	padding:0px;
+	margin:0px;
+	height:22px;
+}
+#num1
+{
+	width:320px;
+	background-color: #ef9e12;
+}
+#num2
+{
+	width:300px;
+	background-color: #f7d00b;
+}
+#num3
+{
+	width:280px;
+	background-color: #faed65;
+}
+#num4
+{
+	width: 260px;
+	background-color: #e0ea23;
+}
+#num5
+{
+	width: 240px;
+	background-color: #92decb;
+}
+.account h1
+{
+    margin: 10px auto;
+    padding:0px;
+    font-size: 32px;
+    color:#6c6c6c;
+    font-weight: bold;
+    width: 80%;
+}
+.account p
+{
+	margin: 5px auto;
+	padding:0px;
+	width:80%;
+	text-align: right;
+    font-size:16px;
+    color:#949494;
+}
 
-/* Photo List View */
+.account_form{
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 40px;
+}
+
+.account_form input{
+	margin: 5px 0 !important;
+}
+
+.action_button
+{
+	display:inline;
+	height:36px;
+	width:100px;
+	text-align: center;
+	box-shadow: 2px 2px 2px #bababa;
+	margin-right: 20px;
+}
+
+.action_button a{
+	font-size: 14px;
+	font-style: none !important;
+	color:white !important;
+	line-height: 36px;
+}
+
+.action_button a:visited{
+	color:white !important;
+	font-style: none !important;
+}
+
+#signup_button, #new_account_button
+{
+    background-color: #ef9e12;
+    float:left;
+}
+#login_button
+{	
+	float:left;
+	background-color:#f7d00b;
+}
+
+#new_account_button{
+	margin-bottom: 10px;
+}
+
+p.account_error{
+	margin-left: 0px;
+	margin-top: 0px;
+	text-align: left;
+	color: red;
+}
+
+/* My Inspiration Page List View */
 #color_filter{
 	position: absolute;
 	top: 42px;
@@ -86,6 +189,14 @@ li .highlight{
 
 li.selected{
 	border: 1px black;
+}
+
+li .highlight{
+	padding: 0px;
+	height: 42px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+
 }
 
 .photo_list{
@@ -264,4 +375,19 @@ li.selected{
 
 .ui-popup-containter{
 	opacity: .6;
+}
+
+/* Feedback */
+#feedback h3{
+	margin: 30px auto;
+    padding:0px;
+    font-size: 24px;
+    color:#6c6c6c;
+    font-weight: bold;
+    width: 80%;
+}
+
+#feedback p{
+	font-size: 16px;
+	text-align: left;
 }

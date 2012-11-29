@@ -27,19 +27,52 @@
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 	
 	<script src="js/index.js"></script>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36620884-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
 </head/>
 <body>
 	<!-- Create Account Page -->
 	<div data-role="page" id="new">
-		<div data-role="content">
-			<h1>Create a new account, just in seconds!</h1>
+		<div data-role="content" class="account">
+			<div class="upperline" id="num1">
+			</div>
+			<div class="upperline" id="num2">
+			</div>
+            <div class="upperline" id="num3">
+			</div>
+			<div class="upperline" id="num4">
+			</div>
+			<div class="upperline" id="num5">
+			</div>
+
+			<h1>Sign up for Inspixel!</h1>
 			<div data-role="fieldcontain">
-				<form action="new_account.php" method="post" data-ajax="false">
+				<form action="new_account.php" id="new_account_form" class="account_form" method="post" data-ajax="false">
+					<?php
+						session_start();
+						if(isset($_SESSION['account_error'])){
+							echo "<p class=\"account_error\">".$_SESSION['account_error']."</p>";
+							$_SESSION['account_error'] = null;
+						}
+					?>
 					<label for="email">Email:</label>
 					<input type="text" name="new_email" id="new_email">
 					<label for="password">Password:</label>
 					<input type="password" name="new_password" id="new_password"><br/>
-					<input type="submit" value="Creat Account" >
+					<div class="action_button" id="new_account_button"><a href="#">Sign up</a></div>
+					<div class="clear"></div>
+					<a class="back_link" href="index.php">Back to log in</a>
 				</form>
 			</div>
 		</div>

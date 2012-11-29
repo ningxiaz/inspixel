@@ -1,4 +1,3 @@
-<?php include("redirect.php"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,7 +17,7 @@
 	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
-
+	
 	<script src="js/index.js"></script>
 	<script type="text/javascript">
 
@@ -35,35 +34,18 @@
 	</script>
 </head/>
 <body>
-	<!-- Favorited Photos Page -->
-	<div data-role="page" id="fav">
+	<!-- Login Page -->
+	<div data-role="page" id="feedback">
 		<div data-role="header" data-position="fixed">
-			<a href="my.php">Back</a>
-			<h1>Favorites</h1>
+			<h1>Feedback</h1>
+			<a href="#" data-rel="back">Back</a>	
 		</div>
 
-		<div data-role="content" class="photo_list">
-			<div class="photo_list_wrapper">
-			</div>		
-		</div>
-
-		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
-			<input type="hidden" name="photo_id" id="show_photo_id"></input>
-		</form>
-
-		<div data-role="footer" class="nav" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li><a href="my.php"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
-						<form id="upload_form_fav" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
-							<div id="input_wrapper">
-								<input type="file" name="file" id="photo_input_fav" size="100"/>
-							</div>
-							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
-						</form>
-						<li><a href="fav.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/star1.png"/></a></li>
-					</ul>
-				</div>
+		<div data-role="content" class="account">
+			<h3>If you find any bugs or have any suggestions, please drop us an email! Thanks:)</h3>
+			<p><a href="mailto:ningxia.z@gmail.com">Ningxia Zhang</a> (Report bugs to her)</p>
+			<p><a href="mailto:jessiechen0701@gmail.com">Jingshu Chen</a></p>
+			<p><a href="mailto:victoriaflrs@gmail.com">Victoria Flores</a></p>
 		</div>
 	</div>
 </body>

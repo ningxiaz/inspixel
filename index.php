@@ -27,20 +27,52 @@
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
 	
 	<script src="js/index.js"></script>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-36620884-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
 </head/>
 <body>
 	<!-- Login Page -->
 	<div data-role="page" id="login">
-		<div data-role="content">
+		<div data-role="content" class="account">
+			<div class="upperline" id="num1">
+			</div>
+			<div class="upperline" id="num2">
+			</div>
+            <div class="upperline" id="num3">
+			</div>
+			<div class="upperline" id="num4">
+			</div>
+			<div class="upperline" id="num5">
+			</div>
+
 			<h1>Hi, Welcome to Inspixel!</h1>
+			<p>Get inspired by colors in life</p>
 			<div data-role="fieldcontain">
-				<form action="login.php" method="post" data-ajax="false">
+				<form id="login_form" class="account_form" action="login.php" method="post" data-ajax="false">
+					<?php
+						session_start();
+						if(isset($_SESSION['account_error'])){
+							echo "<p class=\"account_error\">".$_SESSION['account_error']."</p>";
+							$_SESSION['account_error'] = null;
+						}
+					?>
 					<label for="email">Email:</label>
 					<input type="text" name="login_email" id="login_email">
 					<label for="password">Password:</label>
-					<input type="password" name="login_password" id="login_password"><br/>
-					<input type="submit" value="Login"><br/>
-					<a href="new.php">No account yet? Create one!</a>
+					<input type="password" name="login_password" id="login_password"><br/>				
+					<div class="action_button" id="signup_button"><a href="new.php">Sign up</a></div>
+					<div class="action_button" id="login_button"><a href="#">Log in</a></div>
 				</form>
 			</div>
 		</div>

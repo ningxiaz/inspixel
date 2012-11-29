@@ -1,3 +1,15 @@
+$('#login').live('pageinit',function(event){
+	$('#login_button').live('tap', function(event){
+		$('#login_form').submit();
+	});
+});
+
+$('#new').live('pageinit',function(event){
+	$('#new_account_button').live('tap', function(event){
+		$('#new_account_form').submit();
+	});
+});
+
 $('#my').live('pageinit',function(event){
 	//show all photos by default
 	$.post("show_photos.php", {sendValue: -1}, function(data){
@@ -32,6 +44,9 @@ $('#my').live('pageinit',function(event){
 	});	
 
   	$('.photo_list_item img').live('tap',function(event) {
+  		//google analytics tracking
+  		_gaq.push(['_trackEvent', 'Photos', 'Click', 'Version A']);
+  		
 		var photo_id = $(this).attr('alt');
 		$('#show_photo_id').val(photo_id);
 		$('#show_form').submit();

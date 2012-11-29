@@ -15,6 +15,19 @@
 	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36620884-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
 </head/>
 
 
@@ -157,6 +170,29 @@ div.colorSelector
     display: none;
 }
 
+#ins_pic_b{
+    width:256px;
+}
+        
+#instruction_b {
+    border: 1px solid #000;
+    border-right: none;
+    background: rgba(0,0,0,.5);
+    margin: -1px 0;
+}
+
+#camera_instruction_b
+{
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+}
+
+#hidden_all_photos{
+    display: none;
+}
+
+
 </style>
 <script>
 $('#color').live('pageinit',function(event){
@@ -167,6 +203,9 @@ $('#color').live('pageinit',function(event){
     }); 
 
     $('.photo_list_item').live('tap',function(event) {
+        //google analytics event tracking
+        _gaq.push(['_trackEvent', 'Photos', 'Click', 'Version B']);
+
         var photo_id = $(this).find('.photo').attr('alt');
         $('#show_photo_id').val(photo_id);
         $('#show_form').submit();
@@ -185,6 +224,30 @@ $('#color').live('pageinit',function(event){
     $('#reset').live('tap',function(event) {
         location.reload();
     });
+
+    $.post("show_photos.php", {sendValue: -1}, function(data){
+            $('#hidden_all_photos').html(data.returnValue);
+            var num_photos = $('#hidden_all_photos .photo_list_item').children().length;
+            if(num_photos==0){
+                $("#instruction_b").popup({history:false,transition:"fade"});
+                
+                $( "#instruction_b" ).on({
+                popupbeforeposition: function() {
+                    var h = $( window ).height();
+                        w = $( window ).width();
+                
+                    $( "#instruction_b" ).css( "height", h );
+                    $( "#instruction_b" ).css( "width", w );
+                }
+                });
+                $("#instruction_b").popup("open");
+
+                //tap anywhere to dismiss the instructions
+                $('#instruction_b').live('tap', function(event){
+                    $('#instruction_b').popup('close');
+                });
+            }
+        }, "json");
 
     $.post("show_photos.php", {sendValue: 0}, function(data){
             $('#redUl').html(data.returnValue);
@@ -336,8 +399,18 @@ $('#color').live('pageinit',function(event){
         </form>
 
         <div id="settings" class="hidden_menu">
-            <a href="logout.php" data-ajax="false" class="option" data-role="button" id="logout">Log out</a>
+            <a href="logout.php" data-ajax="false" class="option" data-role="button" id="logout" data-theme="e">Log out</a>
+            <a href="feedback.php" class="option" data-role="button" id="logout">Feedback</a>
             <a href="#" class="option" data-role="button" id="cancel_settings">Cancel</a>
+        </div>
+
+        <div data-role="popup" id="instruction_b" data-corners="false" data-theme="none" data-shadow="false" data-tolerance="0,0">
+            <div id="camera_instruction_b">
+                  <img src="icons/description_b.png" id="ins_pic_b"/>
+            </div>
+        </div>
+
+        <div id="hidden_all_photos">
         </div>
 
         <div data-role="footer" class="nav" data-position="fixed">
