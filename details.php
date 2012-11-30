@@ -95,7 +95,8 @@
 
 			<div data-role="popup" id="color_popup">
 				<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
-				<p></p>
+				<ul>
+				</ul>
 			</div>
 			
 		</div>
@@ -105,8 +106,6 @@
 			<a href="#" class="option" data-role="button" id="delete_button">Delete</a>
 			<a href="#" class="option" data-role="button" id="cancel_button">Cancel</a>
 		</div>
-
-		<div class="loader"></div>
 
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">

@@ -71,8 +71,9 @@
 					<input type="text" name="login_email" id="login_email">
 					<label for="password">Password:</label>
 					<input type="password" name="login_password" id="login_password"><br/>				
-					<div class="action_button" id="signup_button"><a href="new.php">Sign up</a></div>
 					<div class="action_button" id="login_button"><a href="#">Log in</a></div>
+					<div class="clear"></div>
+					<a href="new.php" id="signup_link">No account yet? Sign up here!</a>
 				</form>
 			</div>
 		</div>

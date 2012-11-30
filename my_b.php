@@ -39,7 +39,7 @@
 
 div.colorList
 {
-	height:60px;
+	height:65px;
 	paddng:2px 0 2px 0;
 	margin:0 0 3px 0;
 }
@@ -90,7 +90,7 @@ div.colorSelector
 {
 	display: inline;
 	height:56px;
-	width:290px;
+	width:250px;
 	padding:0;
 	margin:2px 0px 2px 10px; 
 	float:left;
@@ -254,56 +254,56 @@ $('#color').live('pageinit',function(event){
             $('.loader').hide();
             $('#redUl').html(data.returnValue);
             var num_photos = $('#redUl .photo_list_item').children().length;
-            $('#redUl').css("width", 60*num_photos);
+            $('#redUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 1}, function(data){
             $('.loader').hide();
             $('#orangeUl').html(data.returnValue);
             var num_photos = $('#orangeUl .photo_list_item').children().length;
-            $('#orangeUl').css("width", 60*num_photos);
+            $('#orangeUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 2}, function(data){
             $('.loader').hide();
             $('#yellowUl').html(data.returnValue);
             var num_photos = $('#yellowUl .photo_list_item').children().length;
-            $('#yellowUl').css("width", 60*num_photos);
+            $('#yellowUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 3}, function(data){
             $('.loader').hide();
             $('#greenUl').html(data.returnValue);
             var num_photos = $('#greenUl .photo_list_item').children().length;
-            $('#greenUl').css("width", 60*num_photos);
+            $('#greenUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 4}, function(data){
             $('.loader').hide();
             $('#cyansUl').html(data.returnValue);
             var num_photos = $('#cyansUl .photo_list_item').children().length;
-            $('#cyansUl').css("width", 60*num_photos);
+            $('#cyansUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 5}, function(data){
             $('.loader').hide();
             $('#blueUl').html(data.returnValue);
             var num_photos = $('#blueUl .photo_list_item').children().length;
-            $('#blueUl').css("width", 60*num_photos);
+            $('#blueUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 6}, function(data){
             $('.loader').hide();
             $('#magnentassUl').html(data.returnValue);
             var num_photos = $('#magnentassUl .photo_list_item').children().length;
-            $('#magnentassUl').css("width", 60*num_photos);
+            $('#magnentassUl').css("width", 65*num_photos);
         }, "json");
       
       $.post("show_photos.php", {sendValue: 7}, function(data){
             $('.loader').hide();
             $('#blackAndWhiteUl').html(data.returnValue);
             var num_photos = $('#blackAndWhiteUl .photo_list_item').children().length;
-            $('#blackAndWhiteUl').css("width", 60*num_photos);
+            $('#blackAndWhiteUl').css("width", 65*num_photos);
         }, "json");
 
     

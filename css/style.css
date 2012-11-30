@@ -124,6 +124,10 @@ p.account_error{
 	color: red;
 }
 
+#signup_link{
+	line-height: 40px;
+}
+
 /* My Inspiration Page List View */
 #color_filter{
 	position: absolute;
@@ -337,6 +341,17 @@ li .highlight{
 	margin: 10px auto;
 }
 
+#color_popup ul div{
+	height: 30px;
+	margin: 5px 10px;
+	color: white;
+	padding: 5px 10px;
+	text-shadow: none;
+}
+
+#color_popup li{
+	list-style: none;
+}
 
 /* Search Tag Page */
 .tag_group span{

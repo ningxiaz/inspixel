@@ -125,7 +125,6 @@ $('#details').live('pageinit',function(event){
 
 	//auto upload photo
 	$('#photo_input_details').change(function(){
-		//$('loader').show();
 		$('#upload_form_details').submit();
 	});	
 
@@ -153,28 +152,29 @@ $('#details').live('pageinit',function(event){
 
 		//if the photo is not faved, fav it
 		if(button.hasClass('not_faved')){
-			$('loader').show();
 			$.post("fav_photo.php", {sendValue: 1}, function(){
 				button.addClass('faved').removeClass('not_faved');
-				$('loader').hide();
 			});
 		}
 
 		//otherwise, unfav it
 		else if(button.hasClass('faved')){
-			$('loader').show();
 			$.post("fav_photo.php", {sendValue: 0}, function(){
 				button.addClass('not_faved').removeClass('faved');
-				$('loader').hide();
 			});
 		}
 	});
 
 	$('.swatch').live('tap',function(event) {
-		var rgb_string = $(this).css('background-color');
-		$('#color_popup p').html("Color value: "+colorToHex(rgb_string));
-		$("#color_popup").popup({history:false,transition:"fade"});
-		$("#color_popup").popup({positionTo: "origin"});
+		var list_html = "";
+		$('.palette .swatch').each(function(){
+			var rgb_string = $(this).css('background-color');
+			list_html += ("<li><div style=\"background-color: "+rgb_string+"\">"+colorToHex(rgb_string)+"</div></li>");
+		});
+
+		$('#color_popup ul').html(list_html);
+		$("#color_popup").popup({history:false});
+		//$("#color_popup").popup({positionTo: "origin"});
 		$("#color_popup").popup('open');
 	});
 });
