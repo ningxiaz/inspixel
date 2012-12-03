@@ -283,7 +283,7 @@ $('#my_c').live('pageinit',function(event){
         <div class="loader"></div>
 
         <p class="no_photo">
-        	Currently there's no picture in this category. Try taking more pictures!
+        	Currently there are no pictures in this category. Snap some!
         </p>
 
 		<div data-role="footer" class="nav" data-position="fixed">

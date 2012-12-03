@@ -56,8 +56,8 @@
 		<div data-role="header" data-position="fixed">
 			<script src="//cdn.optimizely.com/js/141682239.js"></script>
 			<!-- <a id="color" href="#" data-icon="custom">Color</a>	-->
-			<h1>My Inspirations</h1>
-			<a href="search.php" data-icon="search">Search</a>	
+			<h1>Inspiration</h1>
+			<a href="search.php" data-icon="search"></a>	
 			<a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>	
 		</div>
 
@@ -103,7 +103,7 @@
         <div class="loader"></div>
 
         <p class="no_photo">
-        	Currently there's no picture in this category. Try taking more pictures!
+        	Currently there are no pictures in this category. Snap some!
         </p>
 
 		<div data-role="footer" class="nav" data-position="fixed">
