@@ -57,8 +57,8 @@
 			<div class="upperline" id="num5">
 			</div>
 
-			<h1>Hi, Welcome to Inspixel!</h1>
-			<p>Get inspired by colors in life</p>
+			<h1>Welcome to Inspixel!</h1>
+			<p>Get organized and inspired by colors in everyday life</p>
 			<div data-role="fieldcontain">
 				<form id="login_form" class="account_form" action="login.php" method="post" data-ajax="false">
 					<?php

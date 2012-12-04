@@ -315,7 +315,7 @@ $('#color').live('pageinit',function(event){
     <div data-role="page" id="color">
     	<div data-role="header" data-position="fixed">
             <!-- <a id="color" href="#" data-icon="custom">Color</a>    -->
-            <h1>My Inspirations</h1>
+            <h1>Inspiration</h1>
             <a href="search.php" data-ajax="false" data-icon="search">Search</a> 
             <a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>    
         </div>
