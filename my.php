@@ -10,7 +10,8 @@
     
     <title>Inspixel</title>
 	
-	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="themes/Inspixel.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
 
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
@@ -54,7 +55,6 @@
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
 		<div data-role="header" data-position="fixed">
-			<script src="//cdn.optimizely.com/js/141682239.js"></script>
 			<!-- <a id="color" href="#" data-icon="custom">Color</a>	-->
 			<h1>My Inspirations</h1>
 			<a href="search.php" data-icon="search">Search</a>	

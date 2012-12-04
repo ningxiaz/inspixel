@@ -10,7 +10,8 @@
     
     <title>Inspixel</title>
 	
-	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+  <link rel="stylesheet" href="themes/Inspixel.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
 
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
@@ -217,7 +218,7 @@ $('#my_c').live('pageinit',function(event){
 
 	  	$('.photo_list_item img').live('tap',function(event) {
 	  		//google analytics tracking
-	  		_gaq.push(['_trackEvent', 'Photos', 'Click', 'Version A']);
+	  		_gaq.push(['_trackEvent', 'Photos', 'Click', 'Version C']);
 	  		
 			var photo_id = $(this).attr('alt');
 			$('#show_photo_id').val(photo_id);

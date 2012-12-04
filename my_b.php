@@ -10,7 +10,8 @@
     
     <title>Inspixel</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="themes/Inspixel.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
 	
 	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />	
 	<script src="js/jquery-1.8.2.min.js"></script>
@@ -312,7 +313,6 @@ $('#color').live('pageinit',function(event){
 
 <body>
     <div data-role="page" id="color">
-        <script src="//cdn.optimizely.com/js/141682239.js"></script>
     	<div data-role="header" data-position="fixed">
             <!-- <a id="color" href="#" data-icon="custom">Color</a>    -->
             <h1>My Inspirations</h1>
