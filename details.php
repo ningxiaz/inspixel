@@ -89,7 +89,7 @@
 	  	               		  method: 'feed',
 	  	               		  name: 'I\'ve just logged an inspiration with Inspixel!',
 	  	               		  caption: 'My life in color!',
-	  	               		  description: 'Check out Inspixel app! Get organized and inspired by colors in everyday life.',
+	  	               		  description: 'Check out Inspixel! Get organized and inspired by colors in everyday life.',
 	  	               		  link: 'https://www.facebook.com/Inspixel',
 	  	               		  picture: image_url
 	  	               		}, 
