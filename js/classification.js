@@ -43,7 +43,7 @@ var lightness=getLightness(r,g,b);
     }
     else
     {
-    	saturation=(maxRGB-minRGB)/(2-2*lightness);
+    	saturation=(maxRGB-minRGB) / (2 - maxRGB - minRGB);
     }
    
    return saturation;
