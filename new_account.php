@@ -23,7 +23,7 @@
 				ini_set(’session.gc_maxlifetime’, 8*60*60);
 				session_start();
 				$_SESSION['user_id'] = $array['user_id'];
-				header('location:my.php');
+				header('location:my_b.php');
 			}
 			else{
 				session_start();

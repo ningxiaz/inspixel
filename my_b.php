@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="themes/Inspixel.min.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
 	
-	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />	
+	<link rel="stylesheet" href="css/style.css" />
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
     <script type="text/javascript">
@@ -36,7 +36,11 @@
 #colorViewContent
 {
 	padding:15px 0 0 0;
-}   
+}  
+
+#explore .ui-content{
+    padding: 15px 0;
+} 
 
 div.colorList
 {
@@ -60,7 +64,7 @@ div.colorSelector
 {
 	display:inline;
 	height:56px;
-	width:280px;
+	width:320px;
     list-style: none;
     margin:0;
     padding:0;
@@ -193,15 +197,22 @@ div.colorSelector
     display: none;
 }
 
+#list_switch{
+    background: url(icons/listviewoff.png) no-repeat;
+    height: 30px;
+    width: 45px;
+    top: 3px;
+}
+
 
 </style>
 <script>
 $('#color').live('pageinit',function(event){
 
     //auto upload photo
-    $('#photo_input_color').change(function(){
+    $('#photo_input_my').change(function(){
         $('.loader').show();
-        $('#upload_form_color').submit();
+        $('#upload_form_my').submit();
     }); 
 
     $('.photo_list_item').live('tap',function(event) {
@@ -315,8 +326,8 @@ $('#color').live('pageinit',function(event){
     <div data-role="page" id="color">
     	<div data-role="header" data-position="fixed">
             <!-- <a id="color" href="#" data-icon="custom">Color</a>    -->
+            <a href="my.php" id="list_switch" data-ajax="false"></a>
             <h1>Inspiration</h1>
-            <a href="search.php" data-ajax="false" data-icon="search">Search</a> 
             <a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>    
         </div>
 
@@ -408,7 +419,7 @@ $('#color').live('pageinit',function(event){
         </form>
 
         <div id="settings" class="hidden_menu">
-            <a href="logout.php" data-ajax="false" class="option" data-role="button" id="logout" data-theme="e">Log out</a>
+            <a href="logout.php" data-ajax="false" class="option" data-role="button" id="logout">Log out</a>
             <a href="feedback.php" class="option" data-role="button" id="logout">Feedback</a>
             <a href="#" class="option" data-role="button" id="cancel_settings">Cancel</a>
         </div>
@@ -427,14 +438,16 @@ $('#color').live('pageinit',function(event){
         <div data-role="footer" class="nav" data-position="fixed">
                 <div data-role="navbar">
                     <ul>
-                        <li><a id="reset" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
-                        <form id="upload_form_color" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+                        <li><a id="reset" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/sunon.png"></a></li>
+                        <li><a href="explore.php" data-ajax="false"><img class="tab_icon" src="icons/exploreoff.png"></a></li>
+                        <form id="upload_form_my" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
                             <div id="input_wrapper">
-                                <input type="file" name="file" id="photo_input_color" size="100"/>
+                                <input type="file" name="file" id="photo_input_my" size="100"/>
                             </div>
-                            <li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+                            <li id="photo_li"><a href="#"><img class="tab_icon" src="icons/cameraoff.png"/><br></a></li>
                         </form>
-                        <li><a href="fav.php" data-ajax="false"><img class="tab_icon" src="icons/star1.png"/></a></li>
+                        <li><a href="search.php" data-ajax="false"><img class="tab_icon" src="icons/tagoff.png"></a></li>
+                        <li><a href="fav.php" data-ajax="false"><img class="tab_icon" src="icons/favoriteoff.png"/></a></li>
                     </ul>
                 </div>
         </div>

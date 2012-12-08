@@ -4,7 +4,7 @@ function colorClassification(dominalcolor)
 {
 var	saturation=getSaturation(dominalcolor[0],dominalcolor[1],dominalcolor[2]);
 var colorType,lightness,hue;
-		
+
 		if (saturation<=0.1)
 		{
 			colorType=7;
@@ -25,8 +25,8 @@ var colorType,lightness,hue;
    
    return colorType;      
 }
-	
-	
+
+
 function getSaturation(r,g,b)
 {
 var maxRGB=Math.max(r,g,b)/255;
@@ -48,30 +48,59 @@ var lightness=getLightness(r,g,b);
    
    return saturation;
 }
-	
-	
+
+
 function getLightness(r,g,b)
 {
 var lightness=(Math.max(r,g,b)+Math.min(r,g,b))/(2*255);
 	return lightness;
 }
-	
+
 function getHue(r,g,b)
-  var hue;
-  var maxRGB = Math.max(r,g,b);
-  var minRGB = Math.min(r,g,b);
-    if(maxRGB == minRGB){
-      hue = 0;
-    } else {
-      var d = maxRGB - minRGB;
-      switch(maxRGB){
+{
+var hue;
+var   maxRGB=Math.max(r,g,b);
+var   minRGB=Math.min(r,g,b);
+   if (maxRGB==minRGB)
+   {
+   	hue=0;
+   	}
+   else
+   {
+   	var d=maxRGB-minRGB;
+    switch(maxRGB){
             case r: hue = (g - b) / d + (g < b ? 6 : 0); break;
             case g: hue = (b - r) / d + 2; break;
             case b: hue = (r - g) / d + 4; break;
-            default: break;
         }
-      var hue = hue * 60;
-    }   
+    hue *= 60;
+   	}   
+
+/*   if (r>=g && g>=b)
+   {
+   	    hue=60*(g-b)/(r-b);
+   }
+   else if (g>r && r>=b)
+   {
+    	hue=60*(2-(r-b)/(g-b));
+	}
+   else if (g>=b && b>r)
+   {
+    	hue=60*(2+(b-r)/(g-r));
+   	}
+    else if (b>g && g>r)
+    {
+        hue=60*(4-(g-r)/(b-g));	
+    }
+    else if (b>r && r>=g)
+    {
+        hue=60*(4+(r-g)/(b-g));
+    }
+    else
+    {
+    	hue=60*(6-(b-g)/(r-g));
+    	}
+    	*/
     return hue;
 }
 
@@ -93,5 +122,5 @@ function classifyHue(hue)
 	{ return 6; }
 	else
 	{ return 0; } 
-	
+
 }

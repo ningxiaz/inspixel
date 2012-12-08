@@ -290,14 +290,14 @@ $('#my_c').live('pageinit',function(event){
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="search.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/tag_sized.png"></a></li>
+						<li><a href="search.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/tag_sized_blue.png"></a></li>
 						<form id="upload_form_my" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
 								<input type="file" name="file" id="photo_input_my" size="100"/>
 							</div>
-							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized_blue.png"/></a></li>
 						</form>
-						<li><a href="fav.php"><img class="tab_icon" src="icons/star1.png"/></a></li>
+						<li><a href="fav.php"><img class="tab_icon" src="icons/star1_blue.png"/></a></li>
 					</ul>
 				</div>
 		</div>

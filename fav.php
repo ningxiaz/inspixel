@@ -39,8 +39,7 @@
 	<!-- Favorited Photos Page -->
 	<div data-role="page" id="fav">
 		<div data-role="header" data-position="fixed">
-			<a href="my.php">Back</a>
-			<h1>Favorites</h1>
+			<h1>Favorite</h1>
 		</div>
 
 		<div data-role="content" class="photo_list">
@@ -57,14 +56,16 @@
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="my.php"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<li><a href="my_b.php" data-ajax="false"><img class="tab_icon" src="icons/sunoff.png"></a></li>
+						<li><a href="explore.php" data-ajax="false"><img class="tab_icon" src="icons/exploreoff.png"></a></li>
 						<form id="upload_form_fav" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
 								<input type="file" name="file" id="photo_input_fav" size="100"/>
 							</div>
-							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/cameraoff.png"/></a></li>
 						</form>
-						<li><a href="fav.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/star1.png"/></a></li>
+						<li><a href="search.php" data-ajax="false"><img class="tab_icon" src="icons/tagoff.png"></a></li>
+						<li><a href="fav.php"  class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/favoriteoff.png"/></a></li>
 					</ul>
 				</div>
 		</div>

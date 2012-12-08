@@ -19,8 +19,6 @@
 	
 	<script src="js/jquery-1.8.2.min.js"></script>
 	<script src="js/jquery.mobile-1.2.0.min.js"></script>
-
-	<script src="js/index.js"></script>
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
@@ -34,46 +32,44 @@
 	  })();
 
 	</script>
+	<script src="js/index.js"></script>	
 </head/>
 <body>
-	<!-- Tag Searching Page -->
-	<div data-role="page" id="search">
+	<div data-role="page" id="explore">
 		<div data-role="header" data-position="fixed">
-			<h1>Tags</h1>
+			<!-- <a id="color" href="#" data-icon="custom">Color</a>	-->
+			<h1>Explore</h1>
 		</div>
 
-		<div data-role="content">
-			<div data-role="fieldcontain">
-				<form action="search.php" method="post">
-					<input type="text" name="tag" id="search_tag">
-				</form>
+		<div data-role="content" class="photo_list">
+			<div class="photo_list_wrapper">
 			</div>
-
-			<div class="search_result">
-			</div>
-
 		</div>
 
-		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
-			<input type="hidden" name="photo_id" id="show_photo_id"></input>
-		</form>
+		<div id="settings" class="hidden_menu">
+			<a href="logout.php" class="option" data-role="button" id="logout" data-theme="e">Log out</a>
+			<a href="feedback.php" class="option" data-role="button" id="logout">Feedback</a>
+			<a href="#" class="option" data-role="button" id="cancel_settings">Cancel</a>
+		</div>
+
+        <div class="loader"></div>
 
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="my_b.php" data-ajax="false"><img class="tab_icon" src="icons/sunoff.png"></a></li>
-						<li><a href="explore.php" data-ajax="false"><img class="tab_icon" src="icons/exploreoff.png"></a></li>
-						<form id="upload_form_search" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
+						<li><a href="my_b.php" data-ajax="false" ><img class="tab_icon" src="icons/sunoff.png"></a></li>
+						<li><a href="explore.php" class="ui-btn-active ui-state-persist" data-ajax="false"><img class="tab_icon" src="icons/exploreon.png"></a></li>
+						<form id="upload_form_explore" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
-								<input type="file" name="file" id="photo_input_search" size="100"/>
+								<input type="file" name="file" id="photo_input_explore" size="100"/>
 							</div>
-							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/cameraoff.png"/></a></li>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/cameraoff.png"/><br></a></li>
 						</form>
-						<li><a href="search.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/tagon.png"></a></li>
+						<li><a href="search.php" data-ajax="false"><img class="tab_icon" src="icons/tagoff.png"></a></li>
 						<li><a href="fav.php" data-ajax="false"><img class="tab_icon" src="icons/favoriteoff.png"/></a></li>
 					</ul>
 				</div>
 		</div>
-	</div>
+	</div>	
 </body>
 </html>
