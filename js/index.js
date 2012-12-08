@@ -147,6 +147,9 @@ $('#details').live('pageinit',function(event){
 		}
 	});
 
+	//translate time format
+	$(".ts").timeago();
+
 	$('#fav_button').live('tap',function(event) {
 		var button = $(this);
 
@@ -321,7 +324,7 @@ $('#search').live('pageinit',function(event){
 
 	//auto upload photo
 	$('#photo_input_search').change(function(){
-		$('loader').show();
+		//$('loader').show();
 		$('#upload_form_search').submit();
 	});	
 
@@ -345,3 +348,17 @@ function ajax_search_photos(search_query){
 		//$('loader').hide();
 	}, "json");
 }
+
+$('#explore').live('pageinit',function(event){
+	//auto upload photo
+	$('#photo_input_explore').change(function(){
+		//$('loader').show();
+		$('#upload_form_explore').submit();
+	});	
+
+	$('.loader').show();
+	$.post("show_explore.php", {}, function(data){
+		$('.loader').hide();
+		$('.photo_list_wrapper').html(data.returnValue);
+	}, "json");
+});

@@ -10,7 +10,8 @@
     
     <title>Inspixel</title>
 	
-	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+  <link rel="stylesheet" href="themes/Inspixel.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
 
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
@@ -217,7 +218,7 @@ $('#my_c').live('pageinit',function(event){
 
 	  	$('.photo_list_item img').live('tap',function(event) {
 	  		//google analytics tracking
-	  		_gaq.push(['_trackEvent', 'Photos', 'Click', 'Version A']);
+	  		_gaq.push(['_trackEvent', 'Photos', 'Click', 'Version C']);
 	  		
 			var photo_id = $(this).attr('alt');
 			$('#show_photo_id').val(photo_id);
@@ -289,14 +290,14 @@ $('#my_c').live('pageinit',function(event){
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="search.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/tag_sized.png"></a></li>
+						<li><a href="search.php" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/tag_sized_blue.png"></a></li>
 						<form id="upload_form_my" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
 								<input type="file" name="file" id="photo_input_my" size="100"/>
 							</div>
-							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized_blue.png"/></a></li>
 						</form>
-						<li><a href="fav.php"><img class="tab_icon" src="icons/star1.png"/></a></li>
+						<li><a href="fav.php"><img class="tab_icon" src="icons/star1_blue.png"/></a></li>
 					</ul>
 				</div>
 		</div>

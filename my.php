@@ -10,7 +10,8 @@
     
     <title>Inspixel</title>
 	
-	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="themes/Inspixel.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
 
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="apple-touch-icon" href="icons/homeScreen_new.png" />
@@ -54,10 +55,9 @@
 	<!-- My Inspiration Page -->
 	<div data-role="page" id="my">
 		<div data-role="header" data-position="fixed">
-			<script src="//cdn.optimizely.com/js/141682239.js"></script>
 			<!-- <a id="color" href="#" data-icon="custom">Color</a>	-->
+			<a href="my_b.php" id="color_switch" data-ajax="false"></a>
 			<h1>Inspiration</h1>
-			<a href="search.php" data-icon="search"></a>	
 			<a href="#" data-icon="gear" id="settings_button" data-iconpos="notext"></a>	
 		</div>
 
@@ -76,8 +76,6 @@
 			</div>
 			<div class="photo_list_wrapper">
 			</div>
-			<div>
-			</div>
 
 		</div>
 		<form action="show_details.php" id="show_form" method="post" data-ajax="false">
@@ -85,7 +83,7 @@
 		</form>
 
 		<div id="settings" class="hidden_menu">
-			<a href="logout.php" class="option" data-role="button" id="logout" data-theme="e">Log out</a>
+			<a href="logout.php" class="option" data-role="button" id="logout">Log out</a>
 			<a href="feedback.php" class="option" data-role="button" id="logout">Feedback</a>
 			<a href="#" class="option" data-role="button" id="cancel_settings">Cancel</a>
 		</div>
@@ -109,14 +107,16 @@
 		<div data-role="footer" class="nav" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a id="reset" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/inspire_sized.png"></a></li>
+						<li><a id="reset" class="ui-btn-active ui-state-persist"><img class="tab_icon" src="icons/sunon.png"></a></li>
+						<li><a href="explore.php" data-ajax="false"><img class="tab_icon" src="icons/exploreoff.png"></a></li>
 						<form id="upload_form_my" action="upload.php" enctype="multipart/form-data" method="post" data-ajax="false">
 							<div id="input_wrapper">
 								<input type="file" name="file" id="photo_input_my" size="100"/>
 							</div>
-							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/camera_sized.png"/></a></li>
+							<li id="photo_li"><a href="#"><img class="tab_icon" src="icons/cameraoff.png"/><br></a></li>
 						</form>
-						<li><a href="fav.php"><img class="tab_icon" src="icons/star1.png"/></a></li>
+						<li><a href="search.php" data-ajax="false"><img class="tab_icon" src="icons/tagoff.png"></a></li>
+						<li><a href="fav.php" data-ajax="false"><img class="tab_icon" src="icons/favoriteoff.png"/></a></li>
 					</ul>
 				</div>
 		</div>

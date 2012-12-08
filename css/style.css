@@ -11,6 +11,11 @@
 	height: 50px;
 }
 
+/* Overall Theme */
+.ui-content{
+	background-image: url('images/background_texture.png');
+}
+
 /* Login */
 
 .account
@@ -129,6 +134,13 @@ p.account_error{
 }
 
 /* My Inspiration Page List View */
+#color_switch{
+	background: url(../icons/colorviewoff.png) no-repeat;
+    height: 30px;
+    width: 45px;
+    top: 3px;
+}
+
 #color_filter{
 	position: absolute;
 	top: 42px;
@@ -333,7 +345,7 @@ li .highlight{
 	bottom: 0;
 	z-index: 2000 !important;
 	width: 100%;
-	background-color: #333;
+	background-color: #ccc;
 }
 
 .option{
@@ -411,13 +423,21 @@ li .highlight{
 /* Icons */
 
 .tab_icon{
-	width: 40px;
+	width: 25px;
 }
 
 .nav .ui-btn-inner{
 	padding: 5 !important;
 	padding-top: 5px;
 	margin: 0;
+}
+
+.nav .ui-btn-text{
+	font-size: 9px;
+}
+
+.nav .ui-btn-active{
+	color: white;
 }
 
 #input_wrapper{
@@ -449,3 +469,5 @@ li .highlight{
 	font-size: 16px;
 	text-align: left;
 }
+
+/* Recommend */
